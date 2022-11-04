@@ -4,8 +4,12 @@ function Pizza(toppings,size) {
 }
 
 Pizza.prototype.getPrice = function () {
-  return 5;
+  return calculatePrice(this);
 };
 
 
-  
+function calculatePrice(pizza) {
+  let total = 5;
+
+  return total;
+}
