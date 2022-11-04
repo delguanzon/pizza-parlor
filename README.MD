@@ -55,21 +55,24 @@ Expceted Output: 470;
 Describe: getToppingPrice(toppings)
 Test: It should add 600 to the total for pizzas with special topping: "12k Gold Shavings".
 Code: 
-  const myPizza = new Pizza(["anchovies", "12k Gold Shavings"], "Parva");
-  myPizza.getPrice();
-Expceted Output: 750;
+  let total = 0;
+  const toppings = ["gold", "caviar", "pule"];
+  getToppingPrice(toppings);
+Expceted Output: 600;
 
 Test: It should add 400 to the total for pizzas with special topping: "Caviar".
 Code: 
-  const myPizza = new Pizza(["anchovies", "Caviar"], "Parva");
-  myPizza.getPrice();
-Expceted Output: 550;
+  let total = 0;
+  const toppings = ["gold", "caviar", "pule"];
+  getToppingPrice(toppings);
+Expceted Output: 1000;
 
 Test: It should add 500 to the total for pizzas with special topping: "Pule".
 Code: 
-  const myPizza = new Pizza(["anchovies", "Pule"], "Parva");
-  myPizza.getPrice();
-Expceted Output: 650;
+  let total = 0;
+  const toppings = ["gold", "caviar", "pule"];
+  getToppingPrice(toppings);
+Expceted Output: 1500;
 
 Describe: Pizza()
 

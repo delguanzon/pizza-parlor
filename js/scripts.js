@@ -29,10 +29,14 @@ function getSizePrice(size) {
 
 function getToppingsPrice(toppings) {
   let totalTops = 0;
-  toppings.forEach (function (topping) {
-    if (topping.toLowerCase().includes("gold")) {
-      totalTops += 650;
-    }
-
-  })
+  if(toppings.includes("gold")) {
+    totalTops += 600
+  }
+  if(toppings.includes("caviar")) {
+    totalTops += 400
+  }
+  if(toppings.includes("pule")) {
+    totalTops += 500
+  }
+  return totalTops;
 }
