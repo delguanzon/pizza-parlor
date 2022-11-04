@@ -10,29 +10,32 @@
   <link rel="stylesheet" href="./css/styles.css">
   <title>Pizza Parlor</title>
 </head>
-<body class="container">
-  <h1>Create your own Pizza</h1>
-  <div>
-    <h2> Choose a size:</h2>
-    <input type="radio" class="btn-check" name="size" id="parva" value="parva" autocomplete="off">
-    <label class="btn btn-secondary" for="parva">Parva</label>
-    <input type="radio" class="btn-check" name="size" id="duo" value="duo" autocomplete="off">
-    <label class="btn btn-secondary" for="duo">Duo</label>
-    <input type="radio" class="btn-check" name="size" id="magna" value="magna" autocomplete="off">
-    <label class="btn btn-secondary" for="magna">Magna</label>
-  </div>
-  <div id="">
-    <h2> Choose your toppings:</h2>
-    <div id="ordinary-toppings"></div>
-    <h4> Special Toppings:</h4>
-    <div id="specialToppings">
-      <input type="radio" class="btn-check" name="size" id="caviar" value="caviar" autocomplete="off">
-      <label class="btn" for="caviar">Caviar</label>
-      <input type="radio" class="btn-check" name="size" id="pule" value="pule" autocomplete="off">
-      <label class="btn" for="pule">Pule</label>
-      <input type="radio" class="btn-check" name="size" id="gold" value="gold" autocomplete="off">
-      <label class="btn" for="gold">12k Gold Shavings</label>
+<body>
+  <div class="container">    
+    <h1>Create your own Pizza</h1>
+    <div id="size-section">
+      <h2> Choose a size:</h2>
+      <input type="radio" class="btn-check" name="size" id="parva" value="parva" autocomplete="off">
+      <label class="btn btn-secondary" for="parva">Parva</label>
+      <input type="radio" class="btn-check" name="size" id="duo" value="duo" autocomplete="off">
+      <label class="btn btn-secondary" for="duo">Duo</label>
+      <input type="radio" class="btn-check" name="size" id="magna" value="magna" autocomplete="off">
+      <label class="btn btn-secondary" for="magna">Magna</label>
     </div>
+    <div id="toppings-section">
+      <h2> Choose your toppings:</h2>
+      <div id="ordinary-toppings"></div>
+      <h4> Special Toppings:</h4>
+      <div id="specialToppings">
+        <input type="radio" class="btn-check" name="size" id="caviar" value="caviar" autocomplete="off">
+        <label class="btn" for="caviar">Caviar</label>
+        <input type="radio" class="btn-check" name="size" id="pule" value="pule" autocomplete="off">
+        <label class="btn" for="pule">Pule</label>
+        <input type="radio" class="btn-check" name="size" id="gold" value="gold" autocomplete="off">
+        <label class="btn" for="gold">12k Gold Shavings</label>
+      </div>
+    </div>
+      
     <div id="customer-details ">
       <div class="form-floating mb-1">
         <input type="text" class="form-control" id="full-name" placeholder="John Doe">
@@ -43,12 +46,12 @@
         <label for="floatingPassword">Address</label>
       </div>
     </div>
-    <div id="order-details">
-      <h3>Your Order</h3>
-      <p>Size: <span id="Size:"></span></p>
-      <p>Toppings: <span id="total-price"></span></p>
-      <p>Total: <span id="total-price"></span></p>
-    </div>
-  </div>  
+  </div>
+  <div id="order-details">
+    <h3>Your Order</h3>
+    <p>Size: <span id="Size:"></span></p>
+    <p>Toppings: <span id="total-price"></span></p>
+    <p>Total: <span id="total-price"></span></p>
+  </div>
 </body>
 </html>
