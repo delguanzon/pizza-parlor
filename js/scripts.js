@@ -12,16 +12,27 @@ function calculatePrice(pizza) {
   let size = pizza.size;
   let toppings = pizza.toppings;
   let total = 0;
+  return total;
+}
 
+function getSizePrice(size) {
   if(size.toLowerCase().includes("parva")) {
-    total += 150;
+    return 150;
   }
   else if(size.toLowerCase().includes("duo"))  {
-    total += 300;
+    return 300;
   }
   else if(size.toLowerCase().includes("magna"))  {
-    total += 470;
+    return 470;
   }
+}
 
-  return total;
+function getToppingsPrice(toppings) {
+  let totalTops = 0;
+  toppings.forEach (function (topping) {
+    if (topping.toLowerCase().includes("gold")) {
+      totalTops += 650;
+    }
+
+  })
 }

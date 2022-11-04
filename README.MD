@@ -34,24 +34,10 @@ A website for a pizza company where a user can choose one or more individual top
 ## Tests
 ```
 
-Describe: Pizza()
-
-Test: "It should return a Pizza object with two properties for toppings and size"
-Code: const myPizza = new Pizza(["anchovies", "pineapple"], "medium");
-Expected Output: Pizza { toppings: ["anchovies", "pineapple"], size: "medium" }
-
-Describe: Pizza.prototype.getPrice()
-
-Test: It should return the price of a plain pizza.
-Code: myPizza.getPrice();
-Expceted Output: 15;
-
-Describe: calculatePrice()
+Describe: getSizePrice(size)
 
 Test: It should return 150 for "Parva" size pizza.
-Code: 
-  const myPizza = new Pizza(["anchovies", "pineapple"], "Parva");
-  myPizza.getPrice();
+Code: getSize("Parva")
 Expceted Output: 150;
 
 Test: It should return 300 for "Duo" size pizza.
@@ -66,6 +52,7 @@ Code:
   myPizza.getPrice();
 Expceted Output: 470;
 
+Describe: getToppingPrice(toppings)
 Test: It should add 600 to the total for pizzas with special topping: "12k Gold Shavings".
 Code: 
   const myPizza = new Pizza(["anchovies", "12k Gold Shavings"], "Parva");
@@ -83,6 +70,24 @@ Code:
   const myPizza = new Pizza(["anchovies", "Pule"], "Parva");
   myPizza.getPrice();
 Expceted Output: 650;
+
+Describe: Pizza()
+
+Test: "It should return a Pizza object with two properties for toppings and size"
+Code: const myPizza = new Pizza(["anchovies", "Caviar"], "Parva");
+Expected Output: Pizza { toppings: ["anchovies", "Caviar"], size: "Parva" }
+
+Describe: calculatePrice()
+
+Test: It should return the calculated price of the pizza object.
+Code: calculatePrice(myPizza);
+Expected Output: 
+
+Describe: Pizza.prototype.getPrice()
+
+Test: It should return the price of the pizza.
+Code: myPizza.getPrice();
+Expceted Output: 15;
 
 ```
 
