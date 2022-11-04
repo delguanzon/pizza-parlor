@@ -16,6 +16,9 @@ function calculatePrice(pizza) {
   if(size.toLowerCase().includes("parva")) {
     total += 150;
   }
+  else if(size.toLowerCase().includes("duo"))  {
+    total += 300;
+  }
 
   return total;
 }
