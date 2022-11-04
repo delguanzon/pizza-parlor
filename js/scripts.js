@@ -19,6 +19,9 @@ function calculatePrice(pizza) {
   else if(size.toLowerCase().includes("duo"))  {
     total += 300;
   }
+  else if(size.toLowerCase().includes("magna"))  {
+    total += 470;
+  }
 
   return total;
 }
