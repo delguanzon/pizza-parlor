@@ -52,45 +52,45 @@ Code:
   myPizza.getPrice();
 Expceted Output: 470;
 
-Describe: getToppingPrice(toppings)
+Describe: getToppingsPrice(toppings)
 Test: It should add 600 to the total for pizzas with special topping: "12k Gold Shavings".
 Code: 
   let total = 0;
   const toppings = ["gold", "caviar", "pule"];
-  getToppingPrice(toppings);
+  getToppingsPrice(toppings);
 Expceted Output: 600;
 
 Test: It should add 400 to the total for pizzas with special topping: "Caviar".
 Code: 
   let total = 0;
   const toppings = ["gold", "caviar", "pule"];
-  getToppingPrice(toppings);
+  getToppingsPrice(toppings);
 Expceted Output: 1000;
 
 Test: It should add 500 to the total for pizzas with special topping: "Pule".
 Code: 
   let total = 0;
   const toppings = ["gold", "caviar", "pule"];
-  getToppingPrice(toppings);
+  getToppingsPrice(toppings);
 Expceted Output: 1500;
 
 Describe: Pizza()
 
 Test: "It should return a Pizza object with two properties for toppings and size"
-Code: const myPizza = new Pizza(["anchovies", "Caviar"], "Parva");
+Code: const myPizza = new Pizza(["anchovies", "caviar"], "parva");
 Expected Output: Pizza { toppings: ["anchovies", "Caviar"], size: "Parva" }
 
 Describe: calculatePrice()
 
-Test: It should return the calculated price of the pizza object.
+Test: It should return the calculated price of a pizza object.
 Code: calculatePrice(myPizza);
-Expected Output: 
+Expected Output: 550
 
 Describe: Pizza.prototype.getPrice()
 
-Test: It should return the price of the pizza.
+Test: It should return the price of the pizza through a prototype method.
 Code: myPizza.getPrice();
-Expceted Output: 15;
+Expceted Output: 550;
 
 ```
 

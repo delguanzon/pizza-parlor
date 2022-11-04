@@ -1,3 +1,4 @@
+//Business Logic for Pizza()
 function Pizza(toppings,size) {
   this.toppings = toppings;
   this.size = size;
@@ -7,12 +8,11 @@ Pizza.prototype.getPrice = function () {
   return calculatePrice(this);
 };
 
-
 function calculatePrice(pizza) {
   let size = pizza.size;
   let toppings = pizza.toppings;
   let total = 0;
-  return total;
+  return total + getSizePrice(size) + getToppingsPrice(toppings);
 }
 
 function getSizePrice(size) {
@@ -40,3 +40,4 @@ function getToppingsPrice(toppings) {
   }
   return totalTops;
 }
+
