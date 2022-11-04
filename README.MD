@@ -44,13 +44,48 @@ Describe: Pizza.prototype.getPrice()
 
 Test: It should return the price of a plain pizza.
 Code: myPizza.getPrice();
-Expceted Output: 5;
+Expceted Output: 15;
 
 Describe: calculatePrice()
 
-Test: It should calculate the price of the pizza based on the topppings when getting the price.
-Code: myPizza.getPrice();
-Expceted Output: 5;
+Test: It should return 10 for "Parva" size pizza.
+Code: 
+  const myPizza = new Pizza(["anchovies", "pineapple"], "Parva");
+  myPizza.getPrice();
+Expceted Output: 150;
+
+Test: It should return 20 for "Duo" size pizza.
+Code: 
+  const myPizza = new Pizza(["anchovies", "pineapple"], "Duo");
+  myPizza.getPrice();
+Expceted Output: 300;
+
+Test: It should return 47 for "Magna" size pizza.
+Code: 
+  const myPizza = new Pizza(["anchovies", "pineapple"], "Magna");
+  myPizza.getPrice();
+Expceted Output: 470;
+
+Test: It should add 600 to the total for pizzas with special topping: "12k Gold Shavings".
+Code: 
+  const myPizza = new Pizza(["anchovies", "12k Gold Shavings"], "Parva");
+  myPizza.getPrice();
+Expceted Output: 750;
+
+Test: It should add 400 to the total for pizzas with special topping: "Caviar".
+Code: 
+  const myPizza = new Pizza(["anchovies", "Caviar"], "Parva");
+  myPizza.getPrice();
+Expceted Output: 550;
+
+Test: It should add 500 to the total for pizzas with special topping: "Pule".
+Code: 
+  const myPizza = new Pizza(["anchovies", "Pule"], "Parva");
+  myPizza.getPrice();
+Expceted Output: 650;
+
+
+
 
 ```
 
