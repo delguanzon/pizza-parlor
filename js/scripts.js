@@ -41,3 +41,23 @@ function getToppingsPrice(toppings) {
   return totalTops;
 }
 
+//UI Logic
+
+let pizza = new Pizza();
+
+function handleSize() {
+  let size = document.querySelector("input[name='size']:checked");
+  pizza.size = size.value;
+  pizza.toppings = ["anchovies"]
+  displayTotal();
+}
+
+function displayTotal() {
+  document.getElementById("total-price").replaceChildren(pizza.getPrice());
+}
+
+window.addEventListener("load", function () {
+  document.getElementById("size-section").addEventListener("click", handleSize);
+
+});
+
