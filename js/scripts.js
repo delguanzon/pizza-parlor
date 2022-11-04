@@ -9,7 +9,13 @@ Pizza.prototype.getPrice = function () {
 
 
 function calculatePrice(pizza) {
-  let total = 5;
+  let size = pizza.size;
+  let toppings = pizza.toppings;
+  let total = 0;
+
+  if(size.toLowerCase().includes("parva")) {
+    total += 150;
+  }
 
   return total;
 }

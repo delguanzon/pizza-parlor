@@ -48,19 +48,19 @@ Expceted Output: 15;
 
 Describe: calculatePrice()
 
-Test: It should return 10 for "Parva" size pizza.
+Test: It should return 150 for "Parva" size pizza.
 Code: 
   const myPizza = new Pizza(["anchovies", "pineapple"], "Parva");
   myPizza.getPrice();
 Expceted Output: 150;
 
-Test: It should return 20 for "Duo" size pizza.
+Test: It should return 300 for "Duo" size pizza.
 Code: 
   const myPizza = new Pizza(["anchovies", "pineapple"], "Duo");
   myPizza.getPrice();
 Expceted Output: 300;
 
-Test: It should return 47 for "Magna" size pizza.
+Test: It should return 470 for "Magna" size pizza.
 Code: 
   const myPizza = new Pizza(["anchovies", "pineapple"], "Magna");
   myPizza.getPrice();
@@ -83,9 +83,6 @@ Code:
   const myPizza = new Pizza(["anchovies", "Pule"], "Parva");
   myPizza.getPrice();
 Expceted Output: 650;
-
-
-
 
 ```
 
