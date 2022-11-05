@@ -1,11 +1,11 @@
 //Utility Logic
-function createButton(name, div){
+function createButton(name, div, type){
   let button = document.createElement("input");
   let label = document.createElement("label");
 
   button.setAttribute("type","checkbox"); 
   button.setAttribute("class", "btn-check");
-  button.setAttribute("name", "toppings");
+  button.setAttribute("name", type);
   button.setAttribute("id", name.split(" ").join("").toLowerCase());
   button.setAttribute("value", name);
   button.setAttribute("autocomplete", "off");
@@ -78,13 +78,30 @@ function handleSize() {
 
 function handleToppings(e) {
   let toppings = []; 
+  let cheeses = [];
 
   let cheeseList = document.getElementsByName("cheese");
   cheeseList.forEach(function (cheese) {
-    if(cheese.checked.value.toLowerCase() === "no cheese") {
-      toppings.push(cheese.value);
-    }
+      if(cheese.checked){
+      cheeses.push(cheese.value);
+      }
   });
+
+  console.log(cheeses);
+
+  if (cheeses.includes("No Cheese")){
+    toppings.push("No Cheese");
+    cheeseList.forEach(function (cheese) {
+      if(cheese.checked){
+      cheese.checked = false;
+      }
+  });
+  }
+  else (
+    cheeses.forEach(function (cheese) {
+      toppings.push(cheese);
+    })
+  )
   
   let toppingsList = document.getElementsByName("toppings"); 
   toppingsList.forEach(function (element) {    
@@ -117,7 +134,7 @@ function displayAllToppings () {
 
   const otherToppings = ["Artichokes", "Arugula", "Basil", "Black", "Olives", "Broccoli-Roasted", "Corn-Roasted", "Garlic-Chopped", "Garlic-Roasted", "Jalapenos","Mushrooms", "Oregano", "Pineapple", "Rosemary", "Salt&Pepper", "Spinach", "Tomatoes-Diced", "Tomatoes-Sliced"];
 
-  const cheeses = ["Asiago", "Feta", "Goronzola", "Mozarella", "Parmesan", "Ricotta"];
+  const cheeses = ["Asiago", "Feta", "Goronzola", "Mozarella", "Parmesan", "Ricotta", "No Cheese"];
 
   const dips = ["BBQ Sauce","Buffalo Sauce", "Ranch", "Blue Cheese", "Balsamic Glaze", "Pesto Drizzle"];
 
@@ -149,19 +166,19 @@ function displayAllToppings () {
   const toppingsDiv = document.getElementById("ordinary-toppings");
 
   cheeses.forEach(function (cheese) {
-    toppingsDiv.append(createButton(cheese, cheeseDiv));
+    toppingsDiv.append(createButton(cheese, cheeseDiv, "cheese"));
   });
 
   meatToppings.forEach(function (meat) {
-    toppingsDiv.append(createButton(meat, meatDiv));
+    toppingsDiv.append(createButton(meat, meatDiv, "toppings"));
   });
 
   otherToppings.forEach(function (other) {
-    toppingsDiv.append(createButton(other, othersDiv));
+    toppingsDiv.append(createButton(other, othersDiv, "toppings"));
   });
 
   dips.forEach(function (dips) {
-    toppingsDiv.append(createButton(dips, dipsDiv));
+    toppingsDiv.append(createButton(dips, dipsDiv, "toppings"));
   });
 }
 
