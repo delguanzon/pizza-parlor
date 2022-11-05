@@ -98,6 +98,11 @@ Test: It should return an Order object with Order Items and contact details.
 Code: let order = new Order([myPizza, 'soda'], ['fullname','123 St', '12345678911']);
 Expected Output: Order { orderItems: [myPizza, 'soda'], contact: ['fullname','123 St', '12345678911'] }
 
+Describe: Order.prototype.getTotalPrice()
+Test: It should return the total price for all the items in order.
+Code: order.getPrice();
+Expected Output: 550;
+
 ```
 
 ## License

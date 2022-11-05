@@ -28,6 +28,22 @@ function Order(items,contact) {
   this.currentId = 0;
 }
 
+Order.prototype.getTotalPrice = function () {
+  let total = 0;
+  this.orderItems.forEach( function (element) {
+    total+=element.getPrice();
+  });
+  return total;
+};
+
+
+//Business Logic for Contact() 
+
+function Contact(fullname, address, phoneNumber) {
+  this.fullname = fullname;
+  this.address = address;
+  this.phoneNum = phoneNumber
+}
 
 //Business Logic for Pizza()
 function Pizza(toppings,size) {
