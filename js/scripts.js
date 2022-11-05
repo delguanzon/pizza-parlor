@@ -109,9 +109,14 @@ function displayAllToppings () {
   meatDiv.append(meatLabel);
 
   let cheeseLabel = document.createElement("h4");
-  cheeseLabel.append("Cheeses:");
+  cheeseLabel.append("Cheese:");
   cheeseDiv.setAttribute("id", "cheeses");
   cheeseDiv.append(cheeseLabel);
+
+  let othersLabel = document.createElement("h4");
+  othersLabel.append("Veggies and more:");
+  othersDiv.setAttribute("id", "others");
+  othersDiv.append(othersLabel);
 
   let toppingsDiv = document.getElementById("ordinary-toppings");
 
@@ -121,6 +126,10 @@ function displayAllToppings () {
 
   meatToppings.forEach(function (meat) {
     toppingsDiv.append(createButton(meat, meatDiv));
+  });
+
+  otherToppings.forEach(function (other) {
+    toppingsDiv.append(createButton(other, othersDiv));
   });
 }
 

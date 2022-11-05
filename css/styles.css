@@ -1,2 +1,9 @@
-#order-details {
+label {
+  width: 200px;
+  text-align: left;
+}
+
+input[type="checkbox"] {
+  text-align: left;
+  justify-content: flex-start;
 }

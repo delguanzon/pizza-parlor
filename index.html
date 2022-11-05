@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">  
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">  
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
   <script src="./js/scripts.js"></script>
@@ -18,11 +18,11 @@
         <h2> Choose a size:</h2>
         <input type="radio" class="btn-check" name="size" value="" autocomplete="off" checked>
         <input type="radio" class="btn-check" name="size" id="parva" value="parva" autocomplete="off">
-        <label class="btn" for="parva">Parva</label>
+        <label class="btn" for="parva">Parva (7-inch Pizza)<br>$150</label>
         <input type="radio" class="btn-check" name="size" id="duo" value="duo" autocomplete="off">
-        <label class="btn" for="duo">Duo</label>
+        <label class="btn" for="duo">Duo (12-inch Pizza)<br>$300</label>
         <input type="radio" class="btn-check" name="size" id="magna" value="magna" autocomplete="off">
-        <label class="btn" for="magna">Magna</label>
+        <label class="btn" for="magna">Magna (24-inch Pizza)<br>$470</label>
       </div>
       <div id="toppings-section">
         <h2> Choose your toppings:</h2>
@@ -30,22 +30,22 @@
         <h4> Special Toppings:</h4>
         <div id="specialToppings">
           <input type="checkbox" class="btn-check" name="toppings" id="caviar" value="caviar" autocomplete="off">  
-          <label class="btn" for="caviar">Caviar</label>
+          <label class="btn" for="caviar">Caviar<br>$400</label>
           <input type="checkbox" class="btn-check" name="toppings" id="pule" value="pule" autocomplete="off">
-          <label class="btn" for="pule">Pule</label>
+          <label class="btn" for="pule">Pule<br>$500</label>
           <input type="checkbox" class="btn-check" name="toppings" id="gold" value="gold" autocomplete="off">
-          <label class="btn" for="gold">12k Gold Shavings</label>
+          <label class="btn" for="gold">12k Gold Shavings<br>$600</label>
         </div>
       </div>
         
       <div id="customer-details ">
         <div class="form-floating mb-1">
           <input type="text" class="form-control" id="full-name" placeholder="John Doe">
-          <label for="floatingInput">Full Name</label>
+          <label for="full-name">Full Name</label>
         </div>
         <div class="form-floating">
           <input type="text" class="form-control" id="address" placeholder="Street, City, State, Zip">
-          <label for="floatingPassword">Address</label>
+          <label for="address">Address</label>
         </div>
       </div>    
     </div>
