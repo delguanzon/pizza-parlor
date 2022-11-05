@@ -30,9 +30,11 @@ function Order(items,contact) {
 
 Order.prototype.getTotalPrice = function () {
   let total = 0;
-  this.orderItems.forEach( function (element) {
-    total+=element.getPrice();
-  });
+  if(this.orderItems != undefined){
+    this.orderItems.forEach( function (element) {
+      total+=element.getPrice();
+    });
+  }
   return total;
 };
 
