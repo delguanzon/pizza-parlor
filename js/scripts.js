@@ -46,19 +46,23 @@ function getSizePrice(size) {
   else if(size.toLowerCase().includes("magna"))  {
     return 470;
   }
+  return 0;
 }
 
 function getToppingsPrice(toppings) {
   let totalTops = 0;
-  if(toppings.includes("gold")) {
-    totalTops += 600
-  }
-  if(toppings.includes("caviar")) {
-    totalTops += 400
-  }
-  if(toppings.includes("pule")) {
-    totalTops += 500
-  }
+
+  toppings.forEach( function (topping){
+    if(topping.toLowerCase().includes("gold")) {
+      totalTops += 600
+    }
+    if(topping.toLowerCase().includes("caviar")) {
+      totalTops += 400
+    }
+    if(topping.toLowerCase().includes("pule")) {
+      totalTops += 500
+    }
+  });
   return totalTops;
 }
 
@@ -73,52 +77,76 @@ function handleSize() {
 }
 
 function handleToppings(e) {
+  let toppings = []; 
+
+  let cheeseList = document.getElementsByName("cheese");
+  cheeseList.forEach(function (cheese) {
+    if(cheese.checked.value.toLowerCase() === "no cheese") {
+      toppings.push(cheese.value);
+    }
+  });
   
   let toppingsList = document.getElementsByName("toppings"); 
-  let toppings = []; 
   toppingsList.forEach(function (element) {    
     if(element.checked)
     toppings.push(element.value);
   });
+
   pizza.toppings = toppings;  
   displayTotal();
 }
 
 
 function displayTotal() {
+
+  let toppings = [];
   document.getElementById("total-price").replaceChildren(pizza.getPrice());
+  document.getElementById("size").replaceChildren(pizza.size);
+
+  pizza.toppings.forEach(function (element) {
+    if(element.toLowerCase().includes("gold")) {
+      toppings.push(" 24K Gold Flakes");
+    }
+    else toppings.push(" "+ element);
+  });
+  document.getElementById("toppings").replaceChildren(toppings);
 }
 
 function displayAllToppings () {
-  let meatToppings = ["Anchovies","Bacon", "Canadian Bacon", "Grilled Chicken", "Ground Beef", "Mild Chicken Sausage", "Pepperoni", "Plant-Based Italian Sausage", "Salami", "Spicy Chicken Sausage"];
+  const meatToppings = ["Anchovies","Bacon", "Canadian Bacon", "Grilled Chicken", "Ground Beef", "Mild Chicken Sausage", "Pepperoni", "Plant-Based Italian Sausage", "Salami", "Spicy Chicken Sausage"];
 
-  let otherToppings = ["Artichokes", "Arugula", "Basil", "Black", "Olives", "Broccoli-Roasted", "Corn-Roasted", "Garlic-Chopped", "Garlic-Roasted", "Jalapenos","Mushrooms", "Oregano", "Pineapple", "Rosemary", "Salt&Pepper", "Spinach", "Tomatoes-Diced", "Tomatoes-Sliced"];
+  const otherToppings = ["Artichokes", "Arugula", "Basil", "Black", "Olives", "Broccoli-Roasted", "Corn-Roasted", "Garlic-Chopped", "Garlic-Roasted", "Jalapenos","Mushrooms", "Oregano", "Pineapple", "Rosemary", "Salt&Pepper", "Spinach", "Tomatoes-Diced", "Tomatoes-Sliced"];
 
-  let cheeses = ["Asiago", "Feta", "Goronzola", "Mozarella", "Parmesan", "Ricotta", "No Cheese"];
+  const cheeses = ["Asiago", "Feta", "Goronzola", "Mozarella", "Parmesan", "Ricotta"];
 
-  let finishingSauces = ["BBQ Sauce","Buffalo Sauce", "Ranch", "Blue Cheese", "Balsamic Glaze", "Pesto Drizzle"];
+  const dips = ["BBQ Sauce","Buffalo Sauce", "Ranch", "Blue Cheese", "Balsamic Glaze", "Pesto Drizzle"];
 
-  let meatDiv = document.createElement("div");
-  let cheeseDiv = document.createElement("div");
-  let othersDiv = document.createElement("div");
-  let sauceDiv = document.createElement("div");
+  const meatDiv = document.createElement("div");
+  const cheeseDiv = document.createElement("div");
+  const othersDiv = document.createElement("div");
+  const dipsDiv = document.createElement("div");
 
-  let meatLabel = document.createElement("h4");
+  const meatLabel = document.createElement("h4");
   meatLabel.append("Meats:");
   meatDiv.setAttribute("id", "meats");
   meatDiv.append(meatLabel);
 
-  let cheeseLabel = document.createElement("h4");
+  const cheeseLabel = document.createElement("h4");
   cheeseLabel.append("Cheese:");
   cheeseDiv.setAttribute("id", "cheeses");
   cheeseDiv.append(cheeseLabel);
 
-  let othersLabel = document.createElement("h4");
+  const othersLabel = document.createElement("h4");
   othersLabel.append("Veggies and more:");
   othersDiv.setAttribute("id", "others");
   othersDiv.append(othersLabel);
 
-  let toppingsDiv = document.getElementById("ordinary-toppings");
+  const dipsLabel = document.createElement("h4");
+  dipsLabel.append("Dipping Sauce:");
+  dipsDiv.setAttribute("id", "dips");
+  dipsDiv.append(dipsLabel);
+
+  const toppingsDiv = document.getElementById("ordinary-toppings");
 
   cheeses.forEach(function (cheese) {
     toppingsDiv.append(createButton(cheese, cheeseDiv));
@@ -131,9 +159,11 @@ function displayAllToppings () {
   otherToppings.forEach(function (other) {
     toppingsDiv.append(createButton(other, othersDiv));
   });
+
+  dips.forEach(function (dips) {
+    toppingsDiv.append(createButton(dips, dipsDiv));
+  });
 }
-
-
 
 window.addEventListener("load", function () {
 

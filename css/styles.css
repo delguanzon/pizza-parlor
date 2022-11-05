@@ -1,9 +1,17 @@
 label {
-  width: 200px;
-  text-align: left;
+  width: 250px;
+  
 }
 
-input[type="checkbox"] {
+label > div {
+  display: inline-block;
+}
+
+img {
+  justify-self: flex-start;
+  width: 75px;
+}
+
+.btn {
   text-align: left;
-  justify-content: flex-start;
 }

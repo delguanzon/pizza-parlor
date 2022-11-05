@@ -17,24 +17,33 @@
       <div id="size-section">
         <h2> Choose a size:</h2>
         <input type="radio" class="btn-check" name="size" value="" autocomplete="off" checked>
-        <input type="radio" class="btn-check" name="size" id="parva" value="parva" autocomplete="off">
+        <input type="radio" class="btn-check" name="size" id="parva" value="Parva" autocomplete="off">
         <label class="btn" for="parva">Parva (7-inch Pizza)<br>$150</label>
-        <input type="radio" class="btn-check" name="size" id="duo" value="duo" autocomplete="off">
+        <input type="radio" class="btn-check" name="size" id="duo" value="Duo" autocomplete="off">
         <label class="btn" for="duo">Duo (12-inch Pizza)<br>$300</label>
-        <input type="radio" class="btn-check" name="size" id="magna" value="magna" autocomplete="off">
+        <input type="radio" class="btn-check" name="size" id="magna" value="Magna" autocomplete="off">
         <label class="btn" for="magna">Magna (24-inch Pizza)<br>$470</label>
       </div>
-      <div id="toppings-section">
+      <div id="toppings-section" value="">
         <h2> Choose your toppings:</h2>
         <div id="ordinary-toppings"></div>
-        <h4> Special Toppings:</h4>
+        <h4> Specials:</h4>
         <div id="specialToppings">
-          <input type="checkbox" class="btn-check" name="toppings" id="caviar" value="caviar" autocomplete="off">  
-          <label class="btn" for="caviar">Caviar<br>$400</label>
-          <input type="checkbox" class="btn-check" name="toppings" id="pule" value="pule" autocomplete="off">
-          <label class="btn" for="pule">Pule<br>$500</label>
-          <input type="checkbox" class="btn-check" name="toppings" id="gold" value="gold" autocomplete="off">
-          <label class="btn" for="gold">12k Gold Shavings<br>$600</label>
+          <input type="checkbox" class="btn-check" name="toppings" id="caviar" value="Caviar" autocomplete="off">  
+          <label class="btn" for="caviar">
+            <div><img src="./img/caviar.jpg"></div>
+            <div>Caviar<br>$400</div>
+          </label>
+          <input type="checkbox" class="btn-check" name="toppings" id="pule" value="Pule" autocomplete="off">
+          <label class="btn" for="pule">
+            <div><img src="./img/pule.jpg"></div>
+            <div>Pule<br>$500</div>
+          </label>
+          <input type="checkbox" class="btn-check" name="toppings" id="gold" value="Gold" autocomplete="off">
+          <label class="btn" for="gold">
+            <div><img src="./img/gold.jpg"></div>
+            <div>24k Gold Flakes<br>$600</div>
+          </label>
         </div>
       </div>
         
@@ -52,9 +61,9 @@
     <div id="order-details" class="col-4">
       <div class="sticky-top">
         <h3>Your Order</h3>
-        <p>Size: <span id="Size:"></span></p>
-        <p>Toppings: <span id="Toppings"></span></p>
-        <p>Total: <span id="total-price"></span></p>
+        <p><strong>Size: </strong><span id="size"></span></p>
+        <p><strong>Toppings: </strong><span id="toppings"></span></p>
+        <p><strong>Subtotal: </strong><span id="total-price"></span></p>
       </div>
     </div>
   </div>
