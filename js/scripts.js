@@ -19,6 +19,16 @@ function createButton(name, div, type){
   return div;  
 }
 
+
+//Business Logic for Order()
+
+function Order(items,contact) {
+  this.orderItems = items;
+  this.contact = contact;
+  this.currentId = 0;
+}
+
+
 //Business Logic for Pizza()
 function Pizza(toppings,size) {
   this.toppings = toppings;

@@ -10,6 +10,7 @@
 * HTML
 * CSS
 * Javascript
+* Bootstrap
 
 ## Description
 
@@ -91,6 +92,11 @@ Describe: Pizza.prototype.getPrice()
 Test: It should return the price of the pizza through a prototype method.
 Code: myPizza.getPrice();
 Expceted Output: 550;
+
+Describe: Order()
+Test: It should return an Order object with Order Items and contact details.
+Code: let order = new Order([myPizza, 'soda'], ['fullname','123 St', '12345678911']);
+Expected Output: Order { orderItems: [myPizza, 'soda'], contact: ['fullname','123 St', '12345678911'] }
 
 ```
 
