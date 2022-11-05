@@ -1,3 +1,24 @@
+//Utility Logic
+function createButton(name, div){
+  let button = document.createElement("input");
+  let label = document.createElement("label");
+
+  button.setAttribute("type","checkbox"); 
+  button.setAttribute("class", "btn-check");
+  button.setAttribute("name", "toppings");
+  button.setAttribute("id", name.split(" ").join("").toLowerCase());
+  button.setAttribute("value", name);
+  button.setAttribute("autocomplete", "off");
+
+  label.setAttribute("class","btn mx-1 my-1");
+  label.setAttribute("for", name.split(" ").join("").toLowerCase());
+  label.append(name);
+
+  div.append(button);
+  div.append(label);
+  return div;  
+}
+
 //Business Logic for Pizza()
 function Pizza(toppings,size) {
   this.toppings = toppings;
@@ -82,31 +103,28 @@ function displayAllToppings () {
   let othersDiv = document.createElement("div");
   let sauceDiv = document.createElement("div");
 
+  let meatLabel = document.createElement("h4");
+  meatLabel.append("Meats:");
+  meatDiv.setAttribute("id", "meats");
+  meatDiv.append(meatLabel);
+
+  let cheeseLabel = document.createElement("h4");
+  cheeseLabel.append("Cheeses:");
+  cheeseDiv.setAttribute("id", "cheeses");
+  cheeseDiv.append(cheeseLabel);
+
   let toppingsDiv = document.getElementById("ordinary-toppings");
 
-  meatToppings.forEach(function (meats) {
-    
-
+  cheeses.forEach(function (cheese) {
+    toppingsDiv.append(createButton(cheese, cheeseDiv));
   });
-  
 
-  toppingsDiv.append(meatDiv);
-
-
+  meatToppings.forEach(function (meat) {
+    toppingsDiv.append(createButton(meat, meatDiv));
+  });
 }
 
-function createButton(name, div){
-  let button = document.createElement("input");
-  let label = document.createElement("label");
-  button.setAttribute("type","checkbox");
-  button.setAttribute("class", "btn-check");
-  button.setAttribute("id", name.split(" ").join.toLowerCase());
-  button.setAttribute("value", name);
 
-  label.setAttribute("class","btn");
-  label.setAttribute("for", name.split(" ").join.toLowerCase());
-  
-}
 
 window.addEventListener("load", function () {
 

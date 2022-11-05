@@ -10,49 +10,53 @@
   <link rel="stylesheet" href="./css/styles.css">
   <title>Pizza Parlor</title>
 </head>
-<body>
-  <div class="container">    
-    <h1>Create your own Pizza</h1>
-    <div id="size-section">
-      <h2> Choose a size:</h2>
-      <input type="radio" class="btn-check" name="size" value="" autocomplete="off" checked>
-      <input type="radio" class="btn-check" name="size" id="parva" value="parva" autocomplete="off">
-      <label class="btn" for="parva">Parva</label>
-      <input type="radio" class="btn-check" name="size" id="duo" value="duo" autocomplete="off">
-      <label class="btn" for="duo">Duo</label>
-      <input type="radio" class="btn-check" name="size" id="magna" value="magna" autocomplete="off">
-      <label class="btn" for="magna">Magna</label>
+<body class="container">
+  <div class="row">
+    <div class="col-8">    
+      <h1>Create your own Pizza</h1>
+      <div id="size-section">
+        <h2> Choose a size:</h2>
+        <input type="radio" class="btn-check" name="size" value="" autocomplete="off" checked>
+        <input type="radio" class="btn-check" name="size" id="parva" value="parva" autocomplete="off">
+        <label class="btn" for="parva">Parva</label>
+        <input type="radio" class="btn-check" name="size" id="duo" value="duo" autocomplete="off">
+        <label class="btn" for="duo">Duo</label>
+        <input type="radio" class="btn-check" name="size" id="magna" value="magna" autocomplete="off">
+        <label class="btn" for="magna">Magna</label>
+      </div>
+      <div id="toppings-section">
+        <h2> Choose your toppings:</h2>
+        <div id="ordinary-toppings"></div>
+        <h4> Special Toppings:</h4>
+        <div id="specialToppings">
+          <input type="checkbox" class="btn-check" name="toppings" id="caviar" value="caviar" autocomplete="off">  
+          <label class="btn" for="caviar">Caviar</label>
+          <input type="checkbox" class="btn-check" name="toppings" id="pule" value="pule" autocomplete="off">
+          <label class="btn" for="pule">Pule</label>
+          <input type="checkbox" class="btn-check" name="toppings" id="gold" value="gold" autocomplete="off">
+          <label class="btn" for="gold">12k Gold Shavings</label>
+        </div>
+      </div>
+        
+      <div id="customer-details ">
+        <div class="form-floating mb-1">
+          <input type="text" class="form-control" id="full-name" placeholder="John Doe">
+          <label for="floatingInput">Full Name</label>
+        </div>
+        <div class="form-floating">
+          <input type="text" class="form-control" id="address" placeholder="Street, City, State, Zip">
+          <label for="floatingPassword">Address</label>
+        </div>
+      </div>    
     </div>
-    <div id="toppings-section">
-      <h2> Choose your toppings:</h2>
-      <div id="ordinary-toppings"></div>
-      <h4> Special Toppings:</h4>
-      <div id="specialToppings">        
-        <input type="checkbox" class="btn-check" name="toppings" id="caviar" value="caviar" autocomplete="off">  
-        <label class="btn" for="caviar">Caviar</label>      
-        <input type="checkbox" class="btn-check" name="toppings" id="pule" value="pule" autocomplete="off">
-        <label class="btn" for="pule">Pule</label>
-        <input type="checkbox" class="btn-check" name="toppings" id="gold" value="gold" autocomplete="off">
-        <label class="btn" for="gold"><img src="img/marinara.webp"/>Gold Shavings</label>
+    <div id="order-details" class="col-4">
+      <div class="sticky-top">
+        <h3>Your Order</h3>
+        <p>Size: <span id="Size:"></span></p>
+        <p>Toppings: <span id="Toppings"></span></p>
+        <p>Total: <span id="total-price"></span></p>
       </div>
     </div>
-      
-    <div id="customer-details ">
-      <div class="form-floating mb-1">
-        <input type="text" class="form-control" id="full-name" placeholder="John Doe">
-        <label for="floatingInput">Full Name</label>
-      </div>
-      <div class="form-floating">
-        <input type="text" class="form-control" id="address" placeholder="Street, City, State, Zip">
-        <label for="floatingPassword">Address</label>
-      </div>
-    </div>
-  </div>
-  <div id="order-details">
-    <h3>Your Order</h3>
-    <p>Size: <span id="Size:"></span></p>
-    <p>Toppings: <span id="Toppings"></span></p>
-    <p>Total: <span id="total-price"></span></p>
   </div>
 </body>
 </html>
