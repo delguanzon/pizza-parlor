@@ -51,12 +51,26 @@ function handleSize() {
   displayTotal();
 }
 
+function handleToppings(e) {
+  
+  let toppingsList = document.getElementsByName("toppings"); 
+  let toppings = []; 
+  toppingsList.forEach(function (element) {    
+    if(element.checked)
+    toppings.push(element.value);
+  });
+  pizza.toppings = toppings;  
+  displayTotal();
+}
+
+
 function displayTotal() {
   document.getElementById("total-price").replaceChildren(pizza.getPrice());
 }
 
 window.addEventListener("load", function () {
   document.getElementById("size-section").addEventListener("click", handleSize);
+  document.getElementById("toppings-section").addEventListener("click", handleToppings);
 
 });
 

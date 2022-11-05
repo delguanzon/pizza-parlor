@@ -15,6 +15,7 @@
     <h1>Create your own Pizza</h1>
     <div id="size-section">
       <h2> Choose a size:</h2>
+      <input type="radio" class="btn-check" name="size" value="" autocomplete="off" checked>
       <input type="radio" class="btn-check" name="size" id="parva" value="parva" autocomplete="off">
       <label class="btn" for="parva">Parva</label>
       <input type="radio" class="btn-check" name="size" id="duo" value="duo" autocomplete="off">
@@ -26,12 +27,12 @@
       <h2> Choose your toppings:</h2>
       <div id="ordinary-toppings"></div>
       <h4> Special Toppings:</h4>
-      <div id="specialToppings">
-        <input type="radio" class="btn-check" name="size" value="" autocomplete="off" checked>
-        <input type="radio" class="btn-check" name="size" id="caviar" value="caviar" autocomplete="off">        
-        <input type="radio" class="btn-check" name="size" id="pule" value="pule" autocomplete="off">
+      <div id="specialToppings">        
+        <input type="checkbox" class="btn-check" name="toppings" id="caviar" value="caviar" autocomplete="off">  
+        <label class="btn" for="caviar">Caviar</label>      
+        <input type="checkbox" class="btn-check" name="toppings" id="pule" value="pule" autocomplete="off">
         <label class="btn" for="pule">Pule</label>
-        <input type="radio" class="btn-check" name="size" id="gold" value="gold" autocomplete="off">
+        <input type="checkbox" class="btn-check" name="toppings" id="gold" value="gold" autocomplete="off">
         <label class="btn" for="gold">12k Gold Shavings</label>
       </div>
     </div>
