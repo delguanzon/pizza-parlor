@@ -43,12 +43,11 @@ function getToppingsPrice(toppings) {
 
 //UI Logic
 
-let pizza = new Pizza();
+let pizza = new Pizza([],"");
 
 function handleSize() {
   let size = document.querySelector("input[name='size']:checked");
   pizza.size = size.value;
-  pizza.toppings = ["anchovies"]
   displayTotal();
 }
 
