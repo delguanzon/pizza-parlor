@@ -41,12 +41,12 @@ Order.prototype.getTotalPrice = function () {
 Order.prototype.assignId = function () {
   this.currentId += 1;
   return this.currentId;
-}
+};
 
 Order.prototype.addItem = function (item) {
   item.id = this.assignId();
   this.orderItems[item.id] = item;
-}
+};
 
 //Business Logic for Contact() 
 
@@ -56,6 +56,18 @@ function Contact(fullname, address, phoneNumber) {
   this.phoneNum = phoneNumber
 }
 
+
+//Business Logic for Item()
+
+function Item(item, price, qty) {
+  this.item = item;
+  this.price = price;
+  this.qty = qty;
+}
+
+Item.prototype.getPrice = function () {
+  return this.price * qty;
+};
 //Business Logic for Pizza()
 function Pizza() {
   this.toppings = [];

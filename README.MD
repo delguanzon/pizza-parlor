@@ -93,7 +93,7 @@ Expceted Output: 550;
 
 Describe: Contact()
 Test: It should return a contact object with name, address, and phone number.
-Code: let contact = new Contact('John Doe','123 Street','+1234567889');\
+Code: let contact = new Contact('John Doe','123 Street','+1234567889');
 Expected Output: Contact { fullname: 'John Doe', address: '123 Street', phoneNum: '+1234567889' }
 
 
@@ -106,8 +106,6 @@ Describe: Item.prototype.getPrice()
 Test: It should return the item's total price
 Code: item.getPrice();
 Expected Output: 12;
-
-
 
 Describe: Order()
 Test: It should return an Order object with Order Items and contact details.
