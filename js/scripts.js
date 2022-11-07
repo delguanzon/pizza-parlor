@@ -22,9 +22,9 @@ function createButton(name, div, type){
 
 //Business Logic for Order()
 
-function Order(items,contact) {
-  this.orderItems = items;
-  this.contact = contact;
+function Order() {
+  this.orderItems = {};
+  this.contact = "";
   this.currentId = 0;
 }
 
@@ -37,7 +37,6 @@ Order.prototype.getTotalPrice = function () {
   }
   return total;
 };
-
 
 //Business Logic for Contact() 
 

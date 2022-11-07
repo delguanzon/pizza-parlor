@@ -35,22 +35,24 @@ A website for a pizza company where a user can choose one or more individual top
 ## Tests
 ```
 
+Describe: Pizza()
+
+Test: "It should return a Pizza object with two properties for toppings and size"
+Code: const myPizza = new Pizza(["anchovies", "caviar"], "parva");
+Expected Output: Pizza { toppings: ["anchovies", "Caviar"], size: "Parva" }
+
 Describe: getSizePrice(size)
 
 Test: It should return 150 for "Parva" size pizza.
-Code: getSize("Parva")
+Code: getSizePrize("Parva")
 Expceted Output: 150;
 
 Test: It should return 300 for "Duo" size pizza.
-Code: 
-  const myPizza = new Pizza(["anchovies", "pineapple"], "Duo");
-  myPizza.getPrice();
+Code: getSizePrize("Duo")
 Expceted Output: 300;
 
 Test: It should return 470 for "Magna" size pizza.
-Code: 
-  const myPizza = new Pizza(["anchovies", "pineapple"], "Magna");
-  myPizza.getPrice();
+Code: getSizePrize("Magna")
 Expceted Output: 470;
 
 Describe: getToppingsPrice(toppings)
@@ -75,16 +77,12 @@ Code:
   getToppingsPrice(toppings);
 Expceted Output: 1500;
 
-Describe: Pizza()
-
-Test: "It should return a Pizza object with two properties for toppings and size"
-Code: const myPizza = new Pizza(["anchovies", "caviar"], "parva");
-Expected Output: Pizza { toppings: ["anchovies", "Caviar"], size: "Parva" }
-
 Describe: calculatePrice()
 
 Test: It should return the calculated price of a pizza object.
-Code: calculatePrice(myPizza);
+Code:
+  const myPizza = new Pizza(["anchovies", "caviar"], "parva"); 
+  calculatePrice(myPizza);
 Expected Output: 550
 
 Describe: Pizza.prototype.getPrice()
@@ -93,10 +91,26 @@ Test: It should return the price of the pizza through a prototype method.
 Code: myPizza.getPrice();
 Expceted Output: 550;
 
+Describe: Contact()
+Test: It should return a contact object with name, address, and phone number.
+Code: let contact = new Contact('John Doe','123 Street','+1234567889');\
+Expected Output: Contact { fullname: 'John Doe', address: '123 Street', phoneNum: '+1234567889' }
+
 Describe: Order()
 Test: It should return an Order object with Order Items and contact details.
-Code: let order = new Order([myPizza, 'soda'], ['fullname','123 St', '12345678911']);
-Expected Output: Order { orderItems: [myPizza, 'soda'], contact: ['fullname','123 St', '12345678911'] }
+Code: let order = new Order();
+Expected Output: Order { orderItems: {}, contact: '', currentId: 0 }
+
+Describe: Order.prototype.assignId();
+Test: It should return a number based on current id incrementing it by 1.
+Code: order.assignId();
+Expected Output: 1;
+
+Describe: Order.prototype.addItem();
+Test: Add an item to orderItems of the Order object
+Code: let myOrder = new Order();
+      order.addItem(myPizza)
+Expected Output: Order {orderItems: myPizza, contact:'', currentId:1}
 
 Describe: Order.prototype.getTotalPrice()
 Test: It should return the total price for all the items in order.
