@@ -132,9 +132,15 @@ Test: It should return the total price for all the items in order.
 Code: order.getPrice();
 Expected Output: 550;
 
+Test: It should return two decimal places
+Code: order.getPrice();
+Expected Output: 550.00
+
 Test: It should return 0 if there are no items in  the order.
 Code: order.getPrice();
 Expected Output: 0;
+
+
 
 ```
 

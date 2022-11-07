@@ -31,11 +31,11 @@ function Order() {
 Order.prototype.getTotalPrice = function () {
   let total = 0;
   if(this.orderItems != undefined){
-    this.orderItems.forEach( function (element) {
+    Object.values(this.orderItems).forEach( function (element) {
       total+=element.getPrice();
     });
   }
-  return total;
+  return total.toFixed();
 };
 
 Order.prototype.assignId = function () {
