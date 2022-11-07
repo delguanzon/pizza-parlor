@@ -127,6 +127,11 @@ Code: let myOrder = new Order();
       order.addItem(myPizza)
 Expected Output: Order {orderItems: myPizza, contact:'', currentId:1}
 
+Describe: Order.prototype.removeItem()
+Test: Remove an item from the order
+Code: order.removeItem(myPizza);
+Expected Output: Order {orderItems: , contact:'', currentId:1}
+
 Describe: Order.prototype.getTotalPrice()
 Test: It should return the total price for all the items in order.
 Code: order.getPrice();

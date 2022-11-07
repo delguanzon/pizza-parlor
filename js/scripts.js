@@ -130,7 +130,8 @@ const order = new Order();
 
 function handleSize() {
   let size = document.querySelector("input[name='size']:checked");
-  order.orderItems[order.currentId].size = size.value;
+  order.orderItems[order.currentId].size = size.value;  
+  
   displayTotal();
 }
 
@@ -183,7 +184,6 @@ function displayTotal() {
     else toppings.push(" "+ element);
   });
   document.getElementById("toppings").replaceChildren(toppings);
-  displayCart();
 }
 
 function displayAllToppings () {
@@ -219,38 +219,66 @@ function displayAllToppings () {
   });
 }
 
-function handleAddPizza(){
+function handlePizza(){
   document.getElementById("addBtnGrp").setAttribute("class", "hidden");
   document.getElementById("cyop").setAttribute("class","col-8");
+  
   let pizza = new Pizza();
   order.addItem(pizza);
 }
 
+function handleAddPizza() {
+  displayCart();
+}
+function handleCancel() {
+  document.getElementById("addBtnGrp").setAttribute("class", "btn-group");
+  document.getElementById("cyop").setAttribute("class","col-8 hidden");
+  document.querySelectorAll("input[type='checkbox']").forEach(function (element) {
+    element.checked = false;
+  });
+  document.querySelectorAll("input[type='radio']").forEach(function (element) {
+    element.checked = false;
+  });
+  displayCart();
+}
 
-function displayCart() {
-  let ahref = document.createElement("a");
-  let div = document.createElement("div");
-  let card = document.createElement("div");
-  let item = order.orderItems[order.currentId];
-  ahref.setAttribute("data-bs-toggle", "collapse");
-  ahref.setAttribute("href", "#item");
-  div.setAttribute("class","collapse");
-  div.setAttribute("id","item");
-  card.setAttribute("class","card card-body");
-  card.append(item.toppings.join(", "));
-  console.log(item.toppings);
-  ahref.append("#" + item.id + " " + item.item);
-  div.append(card);
+function displayCart() { 
   
-  document.getElementById("order-details").replaceChildren(ahref);
-  ahref.after(" - $" + item.getPrice());
-  document.getElementById("order-details").append(div);
+  let div2 = document.createElement("ul");
+  div2.style.display = "block";
+
+  if(order.orderItems != undefined){
+    Object.values(order.orderItems).forEach( function (item) {
+      console.log(item);
+      let ahref = document.createElement("a");
+      let div = document.createElement("div");
+      let card = document.createElement("div");
+      let li = document.createElement("li");
+      ahref.setAttribute("data-bs-toggle", "collapse");
+      ahref.setAttribute("href", "#item" + item.id);
+      div.setAttribute("class","collapse");
+      div.setAttribute("id","item" + item.id);
+      card.setAttribute("class","card card-body");
+      card.append(item.toppings.join(", "));
+      console.log(item.toppings);
+      ahref.append("#" + item.id + " " + item.item);
+      div.append(card);
+      li.append(ahref);
+      ahref.after(" - $" + item.getPrice());
+      li.append(div);
+      div2.append(li);
+    });
+  }
+  document.getElementById("order-details").replaceChildren(div2);
 }
 
 window.addEventListener("load", function () {
   displayAllToppings();
+  displayCart();
   
-  document.getElementById("newPizza").addEventListener("click", handleAddPizza);
+  document.getElementById("addPizza").addEventListener("click", handleAddPizza);
+  document.getElementById("cancelPizza").addEventListener("click", handleCancel);
+  document.getElementById("newPizza").addEventListener("click", handlePizza);
   document.getElementById("size-section").addEventListener("click", handleSize);
   document.getElementById("toppings-section").addEventListener("click", handleToppings);
 
