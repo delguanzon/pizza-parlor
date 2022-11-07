@@ -56,7 +56,6 @@ function Contact(fullname, address, phoneNumber) {
   this.phoneNum = phoneNumber
 }
 
-
 //Business Logic for Item()
 
 function Item(item, price, qty) {
@@ -68,6 +67,7 @@ function Item(item, price, qty) {
 Item.prototype.getPrice = function () {
   return Math.round(this.price * this.qty * 100 + Number.EPSILON) /100;
 };
+
 //Business Logic for Pizza()
 function Pizza() {
   this.toppings = [];
@@ -178,6 +178,17 @@ function displayTotal() {
   document.getElementById("toppings").replaceChildren(toppings);
 }
 
+
+
+function createSection (section) {
+  const div = document.createElement("div");
+  const label = document.createElement("h4");
+  label.append(section + ":");
+  div.setAttribute("id", section.toLowerCase());
+  div.append(label);
+  return div;
+}
+
 function displayAllToppings () {
   const meatToppings = ["Anchovies","Bacon", "Canadian Bacon", "Grilled Chicken", "Ground Beef", "Mild Chicken Sausage", "Pepperoni", "Plant-Based Italian Sausage", "Salami", "Spicy Chicken Sausage"];
 
@@ -187,30 +198,10 @@ function displayAllToppings () {
 
   const dips = ["BBQ Sauce","Buffalo Sauce", "Ranch", "Blue Cheese", "Balsamic Glaze", "Pesto Drizzle"];
 
-  const meatDiv = document.createElement("div");
-  const cheeseDiv = document.createElement("div");
-  const othersDiv = document.createElement("div");
-  const dipsDiv = document.createElement("div");
-
-  const meatLabel = document.createElement("h4");
-  meatLabel.append("Meats:");
-  meatDiv.setAttribute("id", "meats");
-  meatDiv.append(meatLabel);
-
-  const cheeseLabel = document.createElement("h4");
-  cheeseLabel.append("Cheese:");
-  cheeseDiv.setAttribute("id", "cheeses");
-  cheeseDiv.append(cheeseLabel);
-
-  const othersLabel = document.createElement("h4");
-  othersLabel.append("Veggies and more:");
-  othersDiv.setAttribute("id", "others");
-  othersDiv.append(othersLabel);
-
-  const dipsLabel = document.createElement("h4");
-  dipsLabel.append("Dipping Sauce:");
-  dipsDiv.setAttribute("id", "dips");
-  dipsDiv.append(dipsLabel);
+  const meatDiv = createSection("Meat");
+  const cheeseDiv = createSection("Cheese");
+  const othersDiv = createSection("Veggies and more");
+  const dipsDiv = createSection("Dipping Sauce");
 
   const toppingsDiv = document.getElementById("ordinary-toppings");
 
