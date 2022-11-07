@@ -96,16 +96,20 @@ Test: It should return a contact object with name, address, and phone number.
 Code: let contact = new Contact('John Doe','123 Street','+1234567889');
 Expected Output: Contact { fullname: 'John Doe', address: '123 Street', phoneNum: '+1234567889' }
 
-
 Describe: Item()
 Test: It should return an item object with properties of name, price and qty.
-Code: let item = new Item("soda",6,2);
+Code: let item = new Item("soda",6.12,2);
 Expected Output:  Item {name:'',price: , qty: }
 
 Describe: Item.prototype.getPrice()
 Test: It should return the item's total price
 Code: item.getPrice();
-Expected Output: 12;
+Expected Output: 12.24;
+
+Test: It should return the items total price rounded up with only 2 decimals.
+Code: let item = new Item("soda",6.123,2);
+      item.getPrice()
+Expected Output: 12.25;
 
 Describe: Order()
 Test: It should return an Order object with Order Items and contact details.

@@ -66,7 +66,7 @@ function Item(item, price, qty) {
 }
 
 Item.prototype.getPrice = function () {
-  return this.price * qty;
+  return Math.round(this.price * this.qty * 100 + Number.EPSILON) /100;
 };
 //Business Logic for Pizza()
 function Pizza() {
