@@ -38,6 +38,16 @@ Order.prototype.getTotalPrice = function () {
   return total;
 };
 
+Order.prototype.assignId = function () {
+  this.currentId += 1;
+  return this.currentId;
+}
+
+Order.prototype.addItem = function (item) {
+  item.id = this.assignId();
+  this.orderItems[item.id] = item;
+}
+
 //Business Logic for Contact() 
 
 function Contact(fullname, address, phoneNumber) {
@@ -47,9 +57,9 @@ function Contact(fullname, address, phoneNumber) {
 }
 
 //Business Logic for Pizza()
-function Pizza(toppings,size) {
-  this.toppings = toppings;
-  this.size = size;
+function Pizza() {
+  this.toppings = [];
+  this.size = "";
 }
 
 Pizza.prototype.getPrice = function () {
@@ -95,7 +105,7 @@ function getToppingsPrice(toppings) {
 
 //UI Logic
 
-let pizza = new Pizza([],"");
+let pizza = new Pizza();
 
 function handleSize() {
   let size = document.querySelector("input[name='size']:checked");
