@@ -35,7 +35,7 @@ Order.prototype.getTotalPrice = function () {
       total+=element.getPrice();
     });
   }
-  return total.toFixed();
+  return total.toFixed(2);
 };
 
 Order.prototype.assignId = function () {
