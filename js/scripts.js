@@ -56,6 +56,12 @@ Order.prototype.addItem = function (item) {
   this.orderItems[item.id] = item;
 };
 
+Order.prototype.removeItem = function(item) {
+  delete this.orderItems[item.id];
+  this.currentId -= 1;
+  return true;
+}
+
 //Business Logic for Contact() 
 
 function Contact(fullname, address, phoneNumber) {
@@ -239,7 +245,8 @@ function handleCancel() {
   document.querySelectorAll("input[type='radio']").forEach(function (element) {
     element.checked = false;
   });
-  displayCart();
+  order.removeItem(order.orderItems[order.currentId]);
+  displayCart();  
 }
 
 function displayCart() { 
