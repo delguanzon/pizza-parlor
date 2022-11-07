@@ -28,6 +28,19 @@ function createSection (section) {
   return div;
 }
 
+function resetForm() {
+  document.getElementById("addBtnGrp").setAttribute("class", "btn-group");
+  document.getElementById("cyop").setAttribute("class","col-8 hidden");
+  document.getElementById("pizza-details").setAttribute("hidden","");
+  document.getElementById("toppings-section").setAttribute("hidden","");
+  document.querySelectorAll("input[type='checkbox']").forEach(function (element) {
+    element.checked = false;
+  });
+  document.querySelectorAll("input[type='radio']").forEach(function (element) {
+    element.checked = false;
+  });  
+}
+
 //Business Logic for Order()
 
 function Order() {
@@ -136,8 +149,13 @@ const order = new Order();
 
 function handleSize() {
   let size = document.querySelector("input[name='size']:checked");
-  order.orderItems[order.currentId].size = size.value;  
-  
+  if(size === null){
+    order.orderItems[order.currentId].size = "";
+  }
+  else {
+    order.orderItems[order.currentId].size = size.value;
+    document.getElementById("toppings-section").removeAttribute("hidden");
+  }  
   displayTotal();
 }
 
@@ -228,23 +246,22 @@ function displayAllToppings () {
 function handlePizza(){
   document.getElementById("addBtnGrp").setAttribute("class", "hidden");
   document.getElementById("cyop").setAttribute("class","col-8");
+  document.getElementById("pizza-details").removeAttribute("hidden");
   
   let pizza = new Pizza();
   order.addItem(pizza);
 }
 
 function handleAddPizza() {
+  resetForm();
+
+  if(order.orderItems[order.currentId].toppings.length === 0){
+    order.orderItems[order.currentId].toppings.push("Dough Only");
+  }
   displayCart();
 }
 function handleCancel() {
-  document.getElementById("addBtnGrp").setAttribute("class", "btn-group");
-  document.getElementById("cyop").setAttribute("class","col-8 hidden");
-  document.querySelectorAll("input[type='checkbox']").forEach(function (element) {
-    element.checked = false;
-  });
-  document.querySelectorAll("input[type='radio']").forEach(function (element) {
-    element.checked = false;
-  });
+  resetForm();
   order.removeItem(order.orderItems[order.currentId]);
   displayCart();  
 }
@@ -252,6 +269,7 @@ function handleCancel() {
 function displayCart() { 
   
   let div2 = document.createElement("ul");
+  let p = document.createElement("p");
   div2.style.display = "block";
 
   if(order.orderItems != undefined){
@@ -276,13 +294,15 @@ function displayCart() {
       div2.append(li);
     });
   }
+  p.append("Total: " + order.getTotalPrice());
   document.getElementById("order-details").replaceChildren(div2);
+  document.getElementById("order-details").append(p);
+  
+
 }
 
 window.addEventListener("load", function () {
-  displayAllToppings();
-  displayCart();
-  
+  displayAllToppings();  
   document.getElementById("addPizza").addEventListener("click", handleAddPizza);
   document.getElementById("cancelPizza").addEventListener("click", handleCancel);
   document.getElementById("newPizza").addEventListener("click", handlePizza);
