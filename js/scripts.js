@@ -19,6 +19,14 @@ function createButton(name, div, type){
   return div;  
 }
 
+function createSection (section) {
+  const div = document.createElement("div");
+  const label = document.createElement("h4");
+  label.append(section + ":");
+  div.setAttribute("id", section.toLowerCase());
+  div.append(label);
+  return div;
+}
 
 //Business Logic for Order()
 
@@ -136,8 +144,6 @@ function handleToppings(e) {
       }
   });
 
-  console.log(cheeses);
-
   if (cheeses.includes("No Cheese")){
     toppings.push("No Cheese");
     cheeseList.forEach(function (cheese) {
@@ -178,17 +184,6 @@ function displayTotal() {
   document.getElementById("toppings").replaceChildren(toppings);
 }
 
-
-
-function createSection (section) {
-  const div = document.createElement("div");
-  const label = document.createElement("h4");
-  label.append(section + ":");
-  div.setAttribute("id", section.toLowerCase());
-  div.append(label);
-  return div;
-}
-
 function displayAllToppings () {
   const meatToppings = ["Anchovies","Bacon", "Canadian Bacon", "Grilled Chicken", "Ground Beef", "Mild Chicken Sausage", "Pepperoni", "Plant-Based Italian Sausage", "Salami", "Spicy Chicken Sausage"];
 
@@ -223,10 +218,8 @@ function displayAllToppings () {
 }
 
 window.addEventListener("load", function () {
-
   displayAllToppings();
   document.getElementById("size-section").addEventListener("click", handleSize);
   document.getElementById("toppings-section").addEventListener("click", handleToppings);
-
 });
 

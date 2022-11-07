@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(36, 36, 36)
+}
+
 label {
   width: 250px;
   
@@ -7,11 +11,51 @@ label > div {
   display: inline-block;
 }
 
-img {
+label > img {
   justify-self: flex-start;
   width: 75px;
 }
 
 .btn {
   text-align: left;
+}
+
+img {
+  width: 100px;
+  
+}
+
+.hidden {
+  display: none;
+}
+
+.btn-outline-danger {
+  font-weight: bolder;
+  font-size: 30px;
+}
+
+button {
+  width: 200px;
+}
+#order-details {
+  margin-top: 20px;
+  border: 1px solid red;
+  border-radius: 5px;
+  padding: 10px;
+
+}
+
+#header {
+  background-color: rgb(36, 36, 36);
+  height: 200px;
+}
+
+#footer {
+  background-color: rgb(36, 36, 36);
+  height: 200px;
+}
+
+#main {
+  background-color: white;
+  min-height: 600px;
 }
