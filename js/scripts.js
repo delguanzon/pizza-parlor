@@ -80,6 +80,7 @@ Item.prototype.getPrice = function () {
 function Pizza() {
   this.toppings = [];
   this.size = "";
+  this.item = "Pizza";
 }
 
 Pizza.prototype.getPrice = function () {
@@ -125,11 +126,11 @@ function getToppingsPrice(toppings) {
 
 //UI Logic
 
-let pizza = new Pizza();
+const order = new Order();
 
 function handleSize() {
   let size = document.querySelector("input[name='size']:checked");
-  pizza.size = size.value;
+  order.orderItems[order.currentId].size = size.value;
   displayTotal();
 }
 
@@ -164,7 +165,7 @@ function handleToppings(e) {
     toppings.push(element.value);
   });
 
-  pizza.toppings = toppings;  
+  order.orderItems[order.currentId].toppings = toppings;  
   displayTotal();
 }
 
@@ -172,16 +173,17 @@ function handleToppings(e) {
 function displayTotal() {
 
   let toppings = [];
-  document.getElementById("total-price").replaceChildren(pizza.getPrice());
-  document.getElementById("size").replaceChildren(pizza.size);
+  document.getElementById("subtotal").replaceChildren(order.orderItems[order.currentId].getPrice());
+  document.getElementById("size").replaceChildren(order.orderItems[order.currentId].size);
 
-  pizza.toppings.forEach(function (element) {
+  order.orderItems[order.currentId].toppings.forEach(function (element) {
     if(element.toLowerCase().includes("gold")) {
       toppings.push(" 24K Gold Flakes");
     }
     else toppings.push(" "+ element);
   });
   document.getElementById("toppings").replaceChildren(toppings);
+  displayCart();
 }
 
 function displayAllToppings () {
@@ -217,9 +219,40 @@ function displayAllToppings () {
   });
 }
 
+function handleAddPizza(){
+  document.getElementById("addBtnGrp").setAttribute("class", "hidden");
+  document.getElementById("cyop").setAttribute("class","col-8");
+  let pizza = new Pizza();
+  order.addItem(pizza);
+}
+
+
+function displayCart() {
+  let ahref = document.createElement("a");
+  let div = document.createElement("div");
+  let card = document.createElement("div");
+  let item = order.orderItems[order.currentId];
+  ahref.setAttribute("data-bs-toggle", "collapse");
+  ahref.setAttribute("href", "#item");
+  div.setAttribute("class","collapse");
+  div.setAttribute("id","item");
+  card.setAttribute("class","card card-body");
+  card.append(item.toppings.join(", "));
+  console.log(item.toppings);
+  ahref.append("#" + item.id + " " + item.item);
+  div.append(card);
+  
+  document.getElementById("order-details").replaceChildren(ahref);
+  ahref.after(" - $" + item.getPrice());
+  document.getElementById("order-details").append(div);
+}
+
 window.addEventListener("load", function () {
   displayAllToppings();
+  
+  document.getElementById("newPizza").addEventListener("click", handleAddPizza);
   document.getElementById("size-section").addEventListener("click", handleSize);
   document.getElementById("toppings-section").addEventListener("click", handleToppings);
+
 });
 
