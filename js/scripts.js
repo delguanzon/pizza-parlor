@@ -222,6 +222,9 @@ function handlePizzaView() {
 }
 
 function handleAddonView(order) {
+  if(Object.values(order.orderItems).length === 0 ){
+    document.getElementById("addItems").replaceChildren("Add to Cart");
+  }
   Object.values(order.orderItems).forEach(function (item) {
     switch (item.item) {
       case 'Breadstick': {
@@ -266,7 +269,9 @@ function handleAddonView(order) {
         document.getElementById('ch-price').value = item.price;
         break;
       }
-      default: break;
+      default: {
+        break;
+      }
     }
   });
   document.getElementById("addBtnGrp").setAttribute("class", "hidden");
@@ -311,6 +316,7 @@ function handleAddons(order) {
               itemArr.push('bs');
             }
             else {
+              console.log(item + "this");
               order.removeItem(item);
               itemArr.push('bs');
             }
@@ -323,6 +329,7 @@ function handleAddons(order) {
             order.addItem(item);
           }
         }
+        console.log(order);
         break;
       }
       case 'lc': {
@@ -454,8 +461,8 @@ function handleAddons(order) {
       default: break;
     }
   });
-  displayCart(order);
   resetForm();
+  displayCart(order);
 }
 
 function displayCart(order) {
@@ -463,8 +470,6 @@ function displayCart(order) {
   let div2 = document.createElement("ul");
   let p = document.createElement("p");
   div2.style.display = "block";
-  console.log(Object.values(order.orderItems));
-
   if (Object.values(order.orderItems).length != 0) {
     Object.values(order.orderItems).forEach(function (item) {
       console.log(item);
@@ -493,6 +498,12 @@ function displayCart(order) {
     document.getElementById("order-details").replaceChildren(div2);
     document.getElementById("order-details").append(p);
   }
+  else {
+    let strong = document.createElement("strong");
+    strong.append("Your cart is empty");
+    document.getElementById("order-details").replaceChildren(strong);
+  }
+  console.log(Object.values(order.orderItems).length); 
 }
 
 window.addEventListener("load", function () {
