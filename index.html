@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
   <script src="./js/scripts.js"></script>
   <link rel="stylesheet" href="./css/styles.css">
@@ -21,7 +21,7 @@
           <div class="col-8 text-center my-auto">
             <div class="btn-group" id="addBtnGrp">
               <button class="btn btn-outline-danger text-center" id="newPizza"><img src="./img/pizza.jpg"> Pizza</button>
-              <button class="btn btn-outline-danger text-center" id="newItem" disabled><img src="./img/side.jpg"> Add-ons</button>
+              <button class="btn btn-outline-danger text-center" id="newItem"><img src="./img/side.jpg"> Add-ons</button>
             </div>
           </div>
           <div class="col-8 hidden" id="cyop">
@@ -59,7 +59,7 @@
               </div>
             </div>
           </div>
-          <div class="col-8" id="add-ons">
+          <div class="col-8" id="add-ons" hidden>
             <div class="row mb-3">
               <div class="col-6">
                 <img src="./img/breadsticks.jpg">
@@ -168,7 +168,7 @@
                 <p><strong>Toppings: </strong><span id="toppings"></span></p>
                 <p><strong>Subtotal: </strong><span id="subtotal"></span></p>
                 <div class="btn-group-vertical">
-                  <button class="btn btn-outline-success" id="addPizza">Add Pizza</button>
+                  <button type="button" class="btn btn-outline-success" id="addPizza">Add Pizza</button>
                   <button class="btn btn-outline-dark" id="cancelPizza">Cancel</button>
                 </div>
               </div>
@@ -178,7 +178,7 @@
                   <p><strong>Your cart is empty</strong><span id="items"></span></p>
                 </div>
               </div>
-              <div class="addbtns btn-group-vertical ">
+              <div class="addbtns btn-group-vertical" hidden>
                 <button class="btn btn-outline-success" id="addItems">Add to Cart</button>
                 <button class="btn btn-outline-dark" id="cancelItems">Cancel</button>
               </div>
