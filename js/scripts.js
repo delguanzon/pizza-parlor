@@ -135,14 +135,14 @@ function Pizza(toppings, size) {
 
 Pizza.prototype.getPrice = function () {
 
-  const total = 0;
+  let total = 0;
   if(this.size.toLowerCase().includes("parva")) {
     total+=150;
   }
-  else if(size.toLowerCase().includes("duo"))  {
+  else if(this.size.toLowerCase().includes("duo"))  {
     total+=300;
   }
-  else if(size.toLowerCase().includes("magna"))  {
+  else if(this.size.toLowerCase().includes("magna"))  {
     total+=470;
   }
 
@@ -163,13 +163,13 @@ Pizza.prototype.getPrice = function () {
 //UI Logic
 
 function handleSize() {
-  let size = document.querySelector("input[name='size']:checked");
+  const size = document.querySelector("input[name='size']:checked");
   if(size === null){
-    console.log(size);
+    return;
   }
   else {
     document.getElementById("toppings-section").removeAttribute("hidden");
-  }  
+  }
   let toppingsList = document.getElementById("toppings").innerText.split(", "); 
   displayTotal(toppingsList, size.value);
 }
@@ -266,23 +266,29 @@ function handlePizza(){
   displayAllToppings();
 }
 
-// function handleAddPizza(order) {
-//   resetForm();
+function handleAddPizza(order) {
+  
+ 
+  //const newOrder = new Order();
+  const size = document.getElementById("size").innerText;
+  const toppings = document.getElementById("toppings").innerText.split(", "); 
+  if(toppings.length === 0 || toppings[0].length === 0){
+    toppings.pop();
+    toppings.push("Dough Only");
+  }
 
-//   if(order.orderItems[order.currentId].toppings.length === 0){
-//     order.orderItems[order.currentId].toppings.push("Dough Only");
-//   }
+  let pizza = new Pizza(toppings,size);
+  order.addItem(pizza);
+  console.log(pizza);
+  resetForm();
+  displayCart(order);
+}
 
-//   let pizza = new Pizza();
-//   order.addItem(pizza);
-//   displayCart();
-// }
-
-// function handleCancel(order) {
-//   resetForm();
-//   order.removeItem(order.orderItems[order.currentId]);
-//   displayCart();  
-// }
+function handleCancel(order) {
+  resetForm();
+  order.removeItem(order.orderItems[order.currentId]);
+  displayCart(order);  
+}
 
 function displayCart(order) { 
   
@@ -320,11 +326,11 @@ function displayCart(order) {
 }
 
 window.addEventListener("load", function () {
-  const order = new Order();  
+  let order = new Order();
   document.getElementById("newPizza").addEventListener("click", handlePizza);
   document.getElementById("size-section").addEventListener("click", handleSize);
   document.getElementById("toppings-section").addEventListener("click", handleToppings);
-  //document.getElementById("addPizza").addEventListener("click", handleAddPizza(order));
+  document.getElementById("addPizza").addEventListener("click", function(e){handleAddPizza(order)});
   //document.getElementById("cancelPizza").addEventListener("click", handleCancel(order));
 });
 
