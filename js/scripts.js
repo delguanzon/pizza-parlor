@@ -26,18 +26,15 @@ Order.prototype.addItem = function (item) {
   this.orderItems[item.id] = item;
 };
 
+Order.prototype.updateItem= function (item, price, qty) {
+  this.orderItems[item.id].price = price;
+  this.orderItems[item.id].qty = qty;
+}
+
 Order.prototype.removeItem = function(item) {
   delete this.orderItems[item.id];
   this.currentId -= 1;
   return true;
-}
-
-//Business Logic for Contact() 
-
-function Contact(fullname, address, phoneNumber) {
-  this.fullname = fullname;
-  this.address = address;
-  this.phoneNum = phoneNumber
 }
 
 //Business Logic for Item()
@@ -300,56 +297,126 @@ function handleCancel(order) {
 
 function handleAddons(order) {
   const itemCodes = ['bs','lc','cc','rb','ms','sw','ch'];
+  const itemArr = [];
+
   itemCodes.forEach( (element) => {
     let qty = document.getElementById(element + '-qty').value;
     let price = document.getElementById(element + '-price').value;
-    if(qty != 0){
-      console.log(qty);
-      console.log(element);
-      switch(element) {
-        case 'bs': {
+    switch(element) {
+      case 'bs': {
+        Object.values(order.orderItems).forEach(function (item) {
+          switch(item.item) {
+            case 'Breadstick': {
+              if(qty != 0) {
+                order.updateItem(item, price,  qty);
+                itemArr.push('bs');
+              }
+              else {
+                order.removeItem(item);
+                itemArr.push('bs');
+                // itemArr.forEach( function (element, index) {
+                //   if(element === 'bs'){
+                //     console.log(element);
+                //     itemArr.splice(index,1);
+                //     console.log(itemArr);
+                //   }
+                // });
+              }              
+              break;
+            }
+            default:{
+              break;
+            }
+          }
+        });
+
+        if(!itemArr.includes('bs')){
           let item = new Item('Breadstick', price, qty);
           order.addItem(item);
-          break;
         }
-        case 'lc': {
+        break;
+      }
+      case 'lc': {
+        Object.values(order.orderItems).forEach(function (item) {
+          if(item.item === 'Lava Cake') {     
+              order.updateItem(item, document.getElementById('lc-price').value,  document.getElementById('lc-qty').value);
+              itemArr.push('lc');
+          }
+        });
+        if(!itemArr.includes('lc')){
           let item = new Item('Lava Cake', price, qty);
           order.addItem(item);
-          break;
         }
-        case 'cc': {
+        break;
+      }
+      case 'cc': {
+        Object.values(order.orderItems).forEach(function (item) {
+          if(item.item === 'Cheesecake') {     
+              order.updateItem(item, document.getElementById('cc-price').value,  document.getElementById('cc-qty').value);
+              itemArr.push('cc');
+          }
+        });
+        if(!itemArr.includes('cc')){
           let item = new Item('Cheesecake', price, qty);
           order.addItem(item);
-          break;
         }
-        case 'rb': {
+        break;
+      }
+      case 'rb': {
+        Object.values(order.orderItems).forEach(function (item) {
+          if(item.item === 'Rootbeer') {     
+              order.updateItem(item, document.getElementById('rb-price').value,  document.getElementById('rb-qty').value);
+              itemArr.push('rb');
+          }
+        });
+        if(!itemArr.includes('rb')){
           let item = new Item('Rootbeer', price, qty);
           order.addItem(item);
-          break;
         }
-        case 'ms': {
+        break;
+      }
+      case 'ms': {
+        Object.values(order.orderItems).forEach(function (item) {
+          if(item.item === 'Milkshake') {     
+              order.updateItem(item, document.getElementById('ms-price').value,  document.getElementById('ms-qty').value);
+              itemArr.push('ms');
+          }
+        });
+        if(!itemArr.includes('ms')){
           let item = new Item('Milkshake', price, qty);
           order.addItem(item);
-          break;
         }
-        case 'sw': {
+        break;
+      }
+      case 'sw': {
+        Object.values(order.orderItems).forEach(function (item) {
+          if(item.item === 'Sparkling Wine') {     
+              order.updateItem(item, document.getElementById('sw-price').value,  document.getElementById('sw-qty').value);
+              itemArr.push('sw');
+          }
+        });
+        if(!itemArr.includes('sw')){
           let item = new Item('Sparkling Wine', price, qty);
           order.addItem(item);
-          break;
         }
-        case 'ch': {
+        break;
+      }
+      case 'ch': {
+        Object.values(order.orderItems).forEach(function (item) {
+          if(item.item === 'Champagne') {
+              order.updateItem(item, document.getElementById('ch-price').value,  document.getElementById('ch-qty').value);
+              itemArr.push('ch');
+          }
+        });
+        if(!itemArr.includes('ch')){
           let item = new Item('Champagne', price, qty);
           order.addItem(item);
-          break;
         }
-        default: break;
+        break;
       }
-    }
-    else {
-      console.log("No order" + element);
+      default: break;
     }
   });
-  console.log(order);
   displayCart(order);
   resetForm();
 }
