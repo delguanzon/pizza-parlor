@@ -135,15 +135,24 @@ function Pizza() {
 }
 
 Pizza.prototype.getPrice = function () {
+
+  const total = 0;
   if(this.size.toLowerCase().includes("parva")) {
-    return 150;
+    total+=150;
   }
   else if(size.toLowerCase().includes("duo"))  {
-    return 300;
+    total+=300;
   }
   else if(size.toLowerCase().includes("magna"))  {
-    return 470;
+    total+=470;
   }
+
+  this.toppings.forEach( function (topping){
+    if(topping.toLowerCase().includes("gold")) {
+      total += 600
+    }
+  });
+  return total;
 };
 
 //UI Logic
