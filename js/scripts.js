@@ -8,9 +8,9 @@ function Order() {
 
 Order.prototype.getTotalPrice = function () {
   let total = 0;
-  if(this.orderItems != undefined){
-    Object.values(this.orderItems).forEach( function (element) {
-      total+=element.getPrice();
+  if (this.orderItems != undefined) {
+    Object.values(this.orderItems).forEach(function (element) {
+      total += element.getPrice();
     });
   }
   return total.toFixed(2);
@@ -26,12 +26,12 @@ Order.prototype.addItem = function (item) {
   this.orderItems[item.id] = item;
 };
 
-Order.prototype.updateItem= function (item, price, qty) {
+Order.prototype.updateItem = function (item, price, qty) {
   this.orderItems[item.id].price = price;
   this.orderItems[item.id].qty = qty;
 }
 
-Order.prototype.removeItem = function(item) {
+Order.prototype.removeItem = function (item) {
   delete this.orderItems[item.id];
   this.currentId -= 1;
   return true;
@@ -46,7 +46,7 @@ function Item(item, price, qty) {
 }
 
 Item.prototype.getPrice = function () {
-  return Math.round(this.price * this.qty * 100 + Number.EPSILON) /100;
+  return Math.round(this.price * this.qty * 100 + Number.EPSILON) / 100;
 };
 
 //Business Logic for Pizza()
@@ -59,24 +59,24 @@ function Pizza(toppings, size) {
 Pizza.prototype.getPrice = function () {
 
   let total = 0;
-  if(this.size.toLowerCase().includes("parva")) {
-    total+=150;
+  if (this.size.toLowerCase().includes("parva")) {
+    total += 150;
   }
-  else if(this.size.toLowerCase().includes("duo"))  {
-    total+=300;
+  else if (this.size.toLowerCase().includes("duo")) {
+    total += 300;
   }
-  else if(this.size.toLowerCase().includes("magna"))  {
-    total+=470;
+  else if (this.size.toLowerCase().includes("magna")) {
+    total += 470;
   }
 
-  this.toppings.forEach( function (topping){
-    if(topping.toLowerCase().includes("gold")) {
+  this.toppings.forEach(function (topping) {
+    if (topping.toLowerCase().includes("gold")) {
       total += 600
     }
-    if(topping.toLowerCase().includes("caviar")) {
+    if (topping.toLowerCase().includes("caviar")) {
       total += 400
     }
-    if(topping.toLowerCase().includes("pule")) {
+    if (topping.toLowerCase().includes("pule")) {
       total += 500
     }
   });
@@ -86,13 +86,13 @@ Pizza.prototype.getPrice = function () {
 //Business Logic for subtotals
 
 function getSizePrice(size) {
-  if(size.toLowerCase().includes("parva")) {
+  if (size.toLowerCase().includes("parva")) {
     return 150;
   }
-  else if(size.toLowerCase().includes("duo"))  {
+  else if (size.toLowerCase().includes("duo")) {
     return 300;
   }
-  else if(size.toLowerCase().includes("magna"))  {
+  else if (size.toLowerCase().includes("magna")) {
     return 470;
   }
   return 0;
@@ -100,14 +100,14 @@ function getSizePrice(size) {
 
 function getToppingsPrice(toppings) {
   let totalTops = 0;
-  toppings.forEach( function (topping){
-    if(topping.toLowerCase().includes("gold")) {
+  toppings.forEach(function (topping) {
+    if (topping.toLowerCase().includes("gold")) {
       totalTops += 600
     }
-    if(topping.toLowerCase().includes("caviar")) {
+    if (topping.toLowerCase().includes("caviar")) {
       totalTops += 400
     }
-    if(topping.toLowerCase().includes("pule")) {
+    if (topping.toLowerCase().includes("pule")) {
       totalTops += 500
     }
   });
@@ -119,46 +119,46 @@ function getToppingsPrice(toppings) {
 
 function handleSize() {
   const size = document.querySelector("input[name='size']:checked");
-  if(size === null){
+  if (size === null) {
     return;
   }
   else {
     document.getElementById("toppings-section").removeAttribute("hidden");
   }
-  let toppingsList = document.getElementById("toppings").innerText.split(", "); 
+  let toppingsList = document.getElementById("toppings").innerText.split(", ");
   displayTotal(toppingsList, size.value);
 }
 
 function handleToppings() {
-  let toppings = []; 
+  let toppings = [];
   let cheeses = [];
   let size = document.getElementById("size").innerText;
 
   let cheeseList = document.getElementsByName("cheese");
   cheeseList.forEach(function (cheese) {
-      if(cheese.checked){
+    if (cheese.checked) {
       cheeses.push(cheese.value);
-      }
+    }
   });
 
-  if (cheeses.includes("No Cheese")){
+  if (cheeses.includes("No Cheese")) {
     toppings.push("No Cheese");
     cheeseList.forEach(function (cheese) {
-      if(cheese.checked){
-      cheese.checked = false;
+      if (cheese.checked) {
+        cheese.checked = false;
       }
-  });
+    });
   }
   else (
     cheeses.forEach(function (cheese) {
       toppings.push(cheese);
     })
   )
-  
-  let toppingsList = document.getElementsByName("toppings"); 
-  toppingsList.forEach(function (element) {    
-    if(element.checked)
-    toppings.push(element.value);
+
+  let toppingsList = document.getElementsByName("toppings");
+  toppingsList.forEach(function (element) {
+    if (element.checked)
+      toppings.push(element.value);
   });
 
   displayTotal(toppings, size);
@@ -166,29 +166,29 @@ function handleToppings() {
 
 
 function displayTotal(toppings, size) {
-  
+
   let toppingsList = [];
 
   document.getElementById("subtotal").replaceChildren(getSizePrice(size) + getToppingsPrice(toppings));
   document.getElementById("size").replaceChildren(size);
 
   toppings.forEach(function (element) {
-    if(element.toLowerCase().includes("gold")) {
+    if (element.toLowerCase().includes("gold")) {
       toppingsList.push(" 24K Gold Flakes");
     }
-    else toppingsList.push(" "+ element);
+    else toppingsList.push(" " + element);
   });
   document.getElementById("toppings").replaceChildren(toppingsList);
 }
 
-function displayAllToppings () {
-  const meatToppings = ["Anchovies","Bacon", "Canadian Bacon", "Grilled Chicken", "Ground Beef", "Mild Chicken Sausage", "Pepperoni", "Plant-Based Italian Sausage", "Salami", "Spicy Chicken Sausage"];
+function displayAllToppings() {
+  const meatToppings = ["Anchovies", "Bacon", "Canadian Bacon", "Grilled Chicken", "Ground Beef", "Mild Chicken Sausage", "Pepperoni", "Plant-Based Italian Sausage", "Salami", "Spicy Chicken Sausage"];
 
-  const otherToppings = ["Artichokes", "Arugula", "Basil", "Black", "Olives", "Broccoli-Roasted", "Corn-Roasted", "Garlic-Chopped", "Garlic-Roasted", "Jalapenos","Mushrooms", "Oregano", "Pineapple", "Rosemary", "Salt&Pepper", "Spinach", "Tomatoes-Diced", "Tomatoes-Sliced"];
+  const otherToppings = ["Artichokes", "Arugula", "Basil", "Black", "Olives", "Broccoli-Roasted", "Corn-Roasted", "Garlic-Chopped", "Garlic-Roasted", "Jalapenos", "Mushrooms", "Oregano", "Pineapple", "Rosemary", "Salt&Pepper", "Spinach", "Tomatoes-Diced", "Tomatoes-Sliced"];
 
   const cheeses = ["Asiago", "Feta", "Goronzola", "Mozarella", "Parmesan", "Ricotta", "No Cheese"];
 
-  const dips = ["BBQ Sauce","Buffalo Sauce", "Ranch", "Blue Cheese", "Balsamic Glaze", "Pesto Drizzle"];
+  const dips = ["BBQ Sauce", "Buffalo Sauce", "Ranch", "Blue Cheese", "Balsamic Glaze", "Pesto Drizzle"];
 
   const meatDiv = createSection("Meat");
   const cheeseDiv = createSection("Cheese");
@@ -214,16 +214,16 @@ function displayAllToppings () {
   });
 }
 
-function handlePizzaView(){
+function handlePizzaView() {
   document.getElementById("addBtnGrp").setAttribute("class", "hidden");
-  document.getElementById("cyop").setAttribute("class","col-8");
-  document.getElementById("pizza-details").removeAttribute("hidden"); 
+  document.getElementById("cyop").setAttribute("class", "col-8");
+  document.getElementById("pizza-details").removeAttribute("hidden");
   displayAllToppings();
 }
 
 function handleAddonView(order) {
   Object.values(order.orderItems).forEach(function (item) {
-    switch(item.item) {
+    switch (item.item) {
       case 'Breadstick': {
         document.getElementById("addItems").replaceChildren("Update Cart");
         document.getElementById('bs-qty').value = item.qty;
@@ -275,15 +275,15 @@ function handleAddonView(order) {
 }
 
 function handleAddPizza(order) {
-  
+
   const size = document.getElementById("size").innerText;
-  const toppings = document.getElementById("toppings").innerText.split(", "); 
-  if(toppings.length === 0 || toppings[0].length === 0){
+  const toppings = document.getElementById("toppings").innerText.split(", ");
+  if (toppings.length === 0 || toppings[0].length === 0) {
     toppings.pop();
     toppings.push("Dough Only");
   }
-  if(size.length != 0){
-    let pizza = new Pizza(toppings,size);
+  if (size.length != 0) {
+    let pizza = new Pizza(toppings, size);
     order.addItem(pizza);
     resetForm();
     displayCart(order);
@@ -296,121 +296,158 @@ function handleCancel(order) {
 }
 
 function handleAddons(order) {
-  const itemCodes = ['bs','lc','cc','rb','ms','sw','ch'];
+  const itemCodes = ['bs', 'lc', 'cc', 'rb', 'ms', 'sw', 'ch'];
   const itemArr = [];
 
-  itemCodes.forEach( (element) => {
+  itemCodes.forEach((element) => {
     let qty = document.getElementById(element + '-qty').value;
     let price = document.getElementById(element + '-price').value;
-    switch(element) {
+    switch (element) {
       case 'bs': {
         Object.values(order.orderItems).forEach(function (item) {
-          switch(item.item) {
-            case 'Breadstick': {
-              if(qty != 0) {
-                order.updateItem(item, price,  qty);
-                itemArr.push('bs');
-              }
-              else {
-                order.removeItem(item);
-                itemArr.push('bs');
-                // itemArr.forEach( function (element, index) {
-                //   if(element === 'bs'){
-                //     console.log(element);
-                //     itemArr.splice(index,1);
-                //     console.log(itemArr);
-                //   }
-                // });
-              }              
-              break;
+          if (item.item === 'Breadstick') {
+            if (qty != 0) {
+              order.updateItem(item, price, qty);
+              itemArr.push('bs');
             }
-            default:{
-              break;
+            else {
+              order.removeItem(item);
+              itemArr.push('bs');
             }
           }
         });
 
-        if(!itemArr.includes('bs')){
-          let item = new Item('Breadstick', price, qty);
-          order.addItem(item);
+        if (qty != 0) {
+          if (!itemArr.includes('bs')) {
+            let item = new Item('Breadstick', price, qty);
+            order.addItem(item);
+          }
         }
         break;
       }
       case 'lc': {
         Object.values(order.orderItems).forEach(function (item) {
-          if(item.item === 'Lava Cake') {     
-              order.updateItem(item, document.getElementById('lc-price').value,  document.getElementById('lc-qty').value);
+          if (item.item === 'Lava Cake') {
+            if (qty != 0) {
+              order.updateItem(item, price, qty);
               itemArr.push('lc');
+            }
+            else {
+              order.removeItem(item);
+              itemArr.push('lc');
+            }
           }
         });
-        if(!itemArr.includes('lc')){
-          let item = new Item('Lava Cake', price, qty);
-          order.addItem(item);
+        if (qty != 0) {
+          if (!itemArr.includes('lc')) {
+            let item = new Item('Lava Cake', price, qty);
+            order.addItem(item);
+          }
         }
         break;
       }
       case 'cc': {
         Object.values(order.orderItems).forEach(function (item) {
-          if(item.item === 'Cheesecake') {     
-              order.updateItem(item, document.getElementById('cc-price').value,  document.getElementById('cc-qty').value);
+          if (item.item === 'Cheesecake') {
+            if (qty != 0) {
+              order.updateItem(item, price, qty);
               itemArr.push('cc');
+            }
+            else {
+              order.removeItem(item);
+              itemArr.push('cc');
+            }
           }
         });
-        if(!itemArr.includes('cc')){
-          let item = new Item('Cheesecake', price, qty);
-          order.addItem(item);
+        if (qty != 0) {
+          if (!itemArr.includes('cc')) {
+            let item = new Item('Cheesecake', price, qty);
+            order.addItem(item);
+          }
         }
         break;
       }
       case 'rb': {
         Object.values(order.orderItems).forEach(function (item) {
-          if(item.item === 'Rootbeer') {     
-              order.updateItem(item, document.getElementById('rb-price').value,  document.getElementById('rb-qty').value);
+          if (item.item === 'Rootbeer') {
+            if (qty != 0) {
+              order.updateItem(item, price, qty);
               itemArr.push('rb');
+            }
+            else {
+              order.removeItem(item);
+              itemArr.push('rb');
+            }
           }
         });
-        if(!itemArr.includes('rb')){
-          let item = new Item('Rootbeer', price, qty);
-          order.addItem(item);
+        if (qty != 0) {
+          if (!itemArr.includes('rb')) {
+            let item = new Item('Rootbeer', price, qty);
+            order.addItem(item);
+          }
         }
         break;
       }
       case 'ms': {
         Object.values(order.orderItems).forEach(function (item) {
-          if(item.item === 'Milkshake') {     
-              order.updateItem(item, document.getElementById('ms-price').value,  document.getElementById('ms-qty').value);
+          if (item.item === 'Milkshake') {
+            if (qty != 0) {
+              order.updateItem(item, price, qty);
               itemArr.push('ms');
+            }
+            else {
+              order.removeItem(item);
+              itemArr.push('ms');
+            }
           }
         });
-        if(!itemArr.includes('ms')){
-          let item = new Item('Milkshake', price, qty);
-          order.addItem(item);
+        if (qty != 0) {
+          if (!itemArr.includes('ms')) {
+            let item = new Item('Milkshake', price, qty);
+            order.addItem(item);
+          }
         }
         break;
       }
       case 'sw': {
         Object.values(order.orderItems).forEach(function (item) {
-          if(item.item === 'Sparkling Wine') {     
-              order.updateItem(item, document.getElementById('sw-price').value,  document.getElementById('sw-qty').value);
+          if (item.item === 'Sparkling Wine') {
+            if (qty != 0) {
+              order.updateItem(item, price, qty);
               itemArr.push('sw');
+            }
+            else {
+              order.removeItem(item);
+              itemArr.push('sw');
+            }
           }
         });
-        if(!itemArr.includes('sw')){
-          let item = new Item('Sparkling Wine', price, qty);
-          order.addItem(item);
+        if (qty != 0) {
+          if (!itemArr.includes('sw')) {
+            let item = new Item('Sparkling Wine', price, qty);
+            order.addItem(item);
+          }
         }
         break;
       }
       case 'ch': {
         Object.values(order.orderItems).forEach(function (item) {
-          if(item.item === 'Champagne') {
-              order.updateItem(item, document.getElementById('ch-price').value,  document.getElementById('ch-qty').value);
+          if (item.item === 'Champagne') {
+            if (qty != 0) {
+              order.updateItem(item, price, qty);
               itemArr.push('ch');
+            }
+            else {
+              order.removeItem(item);
+              itemArr.push('ch');
+            }
           }
         });
-        if(!itemArr.includes('ch')){
-          let item = new Item('Champagne', price, qty);
-          order.addItem(item);
+        if (qty != 0) {
+          if (!itemArr.includes('ch')) {
+            let item = new Item('Champagne', price, qty);
+            order.addItem(item);
+          }
         }
         break;
       }
@@ -421,14 +458,14 @@ function handleAddons(order) {
   resetForm();
 }
 
-function displayCart(order) { 
-  
+function displayCart(order) {
+
   let div2 = document.createElement("ul");
   let p = document.createElement("p");
   div2.style.display = "block";
   console.log(Object.values(order.orderItems));
 
-  if(Object.values(order.orderItems).length != 0) {
+  if (Object.values(order.orderItems).length != 0) {
     Object.values(order.orderItems).forEach(function (item) {
       console.log(item);
       let ahref = document.createElement("a");
@@ -437,10 +474,10 @@ function displayCart(order) {
       let li = document.createElement("li");
       ahref.setAttribute("data-bs-toggle", "collapse");
       ahref.setAttribute("href", "#item" + item.id);
-      div.setAttribute("class","collapse");
-      div.setAttribute("id","item" + item.id);
-      card.setAttribute("class","card card-body");
-      if(item.toppings != undefined) {
+      div.setAttribute("class", "collapse");
+      div.setAttribute("id", "item" + item.id);
+      card.setAttribute("class", "card card-body");
+      if (item.toppings != undefined) {
         card.append(item.toppings.join(", "));
         console.log(item.toppings);
         div.append(card);
@@ -464,36 +501,36 @@ window.addEventListener("load", function () {
   document.getElementById("newPizza").addEventListener("click", handlePizzaView);
   document.getElementById("size-section").addEventListener("click", handleSize);
   document.getElementById("toppings-section").addEventListener("click", handleToppings);
-  document.getElementById("newItem").addEventListener("click", function(e){handleAddonView(order)});
-  document.getElementById("addPizza").addEventListener("click", function(e){handleAddPizza(order)});
-  document.getElementById("addItems").addEventListener("click", function(e){handleAddons(order)});
-  document.getElementById("cancelPizza").addEventListener("click", function(e){handleCancel(order)});
-  document.getElementById("cancelItems").addEventListener("click", function(e){handleCancel(order)});
+  document.getElementById("newItem").addEventListener("click", function (e) { handleAddonView(order) });
+  document.getElementById("addPizza").addEventListener("click", function (e) { handleAddPizza(order) });
+  document.getElementById("addItems").addEventListener("click", function (e) { handleAddons(order) });
+  document.getElementById("cancelPizza").addEventListener("click", function (e) { handleCancel(order) });
+  document.getElementById("cancelItems").addEventListener("click", function (e) { handleCancel(order) });
 });
 
 
 //Utility Logic
-function createButton(name, div, type){
+function createButton(name, div, type) {
   let button = document.createElement("input");
   let label = document.createElement("label");
 
-  button.setAttribute("type","checkbox"); 
+  button.setAttribute("type", "checkbox");
   button.setAttribute("class", "btn-check");
   button.setAttribute("name", type);
   button.setAttribute("id", name.split(" ").join("").toLowerCase());
   button.setAttribute("value", name);
   button.setAttribute("autocomplete", "off");
 
-  label.setAttribute("class","btn mx-1 my-1");
+  label.setAttribute("class", "btn mx-1 my-1");
   label.setAttribute("for", name.split(" ").join("").toLowerCase());
   label.append(name);
 
   div.append(button);
   div.append(label);
-  return div;  
+  return div;
 }
 
-function createSection (section) {
+function createSection(section) {
   const div = document.createElement("div");
   const label = document.createElement("h4");
   label.append(section + ":");
@@ -504,19 +541,19 @@ function createSection (section) {
 
 function resetForm() {
   document.getElementById("addBtnGrp").setAttribute("class", "btn-group");
-  document.getElementById("cyop").setAttribute("class","col-8 hidden");
-  document.getElementById("pizza-details").setAttribute("hidden","");
-  document.getElementById("add-ons").setAttribute("hidden","");  
-  document.getElementById("toppings-section").setAttribute("hidden","");
+  document.getElementById("cyop").setAttribute("class", "col-8 hidden");
+  document.getElementById("pizza-details").setAttribute("hidden", "");
+  document.getElementById("add-ons").setAttribute("hidden", "");
+  document.getElementById("toppings-section").setAttribute("hidden", "");
   document.getElementById("size").innerText = "";
   document.getElementById("toppings").innerText = "";
   document.getElementById("subtotal").innerText = "";
-  document.querySelector(".addbtns").setAttribute("hidden","");
+  document.querySelector(".addbtns").setAttribute("hidden", "");
   document.querySelectorAll("input[type='checkbox']").forEach(function (element) {
     element.checked = false;
   });
   document.querySelectorAll("input[type='radio']").forEach(function (element) {
     element.checked = false;
-  });  
+  });
 }
 
