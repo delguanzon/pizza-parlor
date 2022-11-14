@@ -41,7 +41,7 @@ function resetForm() {
   });  
 }
 
-//Business Logic
+//Business Logic for subtotal price
 
 function getSizePrice(size) {
   if(size.toLowerCase().includes("parva")) {
@@ -71,7 +71,6 @@ function getToppingsPrice(toppings) {
   });
   return totalTops;
 }
-
 
 //Business Logic for Order()
 
@@ -150,6 +149,9 @@ Pizza.prototype.getPrice = function () {
   this.toppings.forEach( function (topping){
     if(topping.toLowerCase().includes("gold")) {
       total += 600
+    }
+    if(topping.toLowerCase().includes("caviar")) {
+      totalTops += 400
     }
   });
   return total;
