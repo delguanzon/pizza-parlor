@@ -55,6 +55,12 @@ Code:
   myPizza.getPrice();
 Expceted Output: 300;
 
+Test: It should return 470 for "Magna" size pizza.
+Code: 
+  const myPizza = new Pizza(["anchovies", "caviar"], "magna");
+  myPizza.getPrice();
+Expceted Output: 470;
+
 Test: It should return the price of the pizza through a prototype method.
 Code: myPizza.getPrice();
 Expceted Output: 550;
