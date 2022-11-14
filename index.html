@@ -59,7 +59,7 @@
               </div>
             </div>
           </div>
-          <div class="col-8" id="add-ons" hidden>
+          <div class="col-8" id="add-ons">
             <div class="row mb-3">
               <div class="col-6">
                 <img src="./img/breadsticks.jpg">
@@ -67,11 +67,11 @@
               </div>
               <div class="input-group col align-self-center">
                 <span class="input-group-text">Qty</span>
-                <input type="number" class="form-control" aria-label="Quantity">
+                <input type="number" class="form-control" id="bs-qty" value="0" min="0" aria-label="Quantity">
               </div>
               <div class="input-group col align-self-center">
                 <span class="input-group-text">$</span>
-                <input type="number" class="form-control" step=".01" aria-label="Amount">
+                <input type="number" class="form-control" step=".01" id="bs-price" value="0.00" min="0.00" aria-label="Amount">
               </div>
             </div>
             <div class="row mb-3">
@@ -81,25 +81,81 @@
               </div>
               <div class="input-group col align-self-center">
                 <span class="input-group-text">Qty</span>
-                <input type="number" class="form-control" aria-label="Quantity">
+                <input type="number" class="form-control" id="lc-qty" value="0" min="0.00" aria-label="Quantity">
               </div>
               <div class="input-group col align-self-center">
                 <span class="input-group-text">$</span>
-                <input type="number" class="form-control" step=".01" aria-label="Amount">
+                <input type="number" class="form-control" step=".01" id="lc-price" value="0.00" min="0.00" aria-label="Amount">
               </div>
             </div>
             <div class="row mb-3">
               <div class="col-6">
-                <img src="./img/rootbeer.jpg">
-                Breadsticks
+                <img class="rootbeer" src="./img/cheesecake.jpg">
+                Cheesecake</img>
               </div>
               <div class="input-group col align-self-center">
                 <span class="input-group-text">Qty</span>
-                <input type="number" class="form-control" aria-label="Quantity">
+                <input type="number" class="form-control" id="cc-qty" value="0" min="0.00" aria-label="Quantity">
               </div>
               <div class="input-group col align-self-center">
                 <span class="input-group-text">$</span>
-                <input type="number" class="form-control" step=".01" aria-label="Amount">
+                <input type="number" class="form-control" id="cc-price" step=".01" value="0.00" min="0.00" aria-label="Amount">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-6">
+                <img class="rootbeer" src="./img/rootbeer.jpg">
+                Rootbeer</img>
+              </div>
+              <div class="input-group col align-self-center">
+                <span class="input-group-text">Qty</span>
+                <input type="number" class="form-control" id="rb-qty" value="0" min="0.00" aria-label="Quantity">
+              </div>
+              <div class="input-group col align-self-center">
+                <span class="input-group-text">$</span>
+                <input type="number" class="form-control" id="rb-price" step=".01" value="0.00" min="0.00" aria-label="Amount">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-6">
+                <img class="rootbeer" src="./img/milkshake.jpg">
+                Milkshake</img>
+              </div>
+              <div class="input-group col align-self-center">
+                <span class="input-group-text">Qty</span>
+                <input type="number" class="form-control" id="ms-qty" value="0" min="0.00" aria-label="Quantity">
+              </div>
+              <div class="input-group col align-self-center">
+                <span class="input-group-text">$</span>
+                <input type="number" class="form-control" id="ms-price" step=".01" value="0.00" min="0.00" aria-label="Amount">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-6">
+                <img class="rootbeer" src="./img/sparklingcider.png">
+                Sparkling Wine</img>
+              </div>
+              <div class="input-group col align-self-center">
+                <span class="input-group-text">Qty</span>
+                <input type="number" class="form-control" id="sw-qty" value="0" min="0.00" aria-label="Quantity">
+              </div>
+              <div class="input-group col align-self-center">
+                <span class="input-group-text">$</span>
+                <input type="number" class="form-control" id="sw-price" step=".01" value="0.00" min="0.00" aria-label="Amount">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-6">
+                <img class="rootbeer" src="./img/champagne.jpg">
+                Champagne</img>
+              </div>
+              <div class="input-group col align-self-center">
+                <span class="input-group-text">Qty</span>
+                <input type="number" class="form-control" id="ch-qty" value="0" min="0.00" aria-label="Quantity">
+              </div>
+              <div class="input-group col align-self-center">
+                <span class="input-group-text">$</span>
+                <input type="number" class="form-control" id="ch-price" step=".01"  value="0.00" min="0.00"aria-label="Amount">
               </div>
             </div>
           </div>
@@ -124,7 +180,7 @@
               </div>
               <div class="addbtns btn-group-vertical ">
                 <button class="btn btn-outline-success" id="addItems">Add to Cart</button>
-                <button class="btn btn-outline-dark" id="cancelPizza">Cancel</button>
+                <button class="btn btn-outline-dark" id="cancelItems">Cancel</button>
               </div>
             </div>
           </div>

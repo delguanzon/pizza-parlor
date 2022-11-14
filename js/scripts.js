@@ -246,6 +246,60 @@ function handleCancel(order) {
   displayCart(order);  
 }
 
+function handleAddons(order) {
+  const itemCodes = ['bs','lc','cc','rb','ms','sw','ch'];
+  itemCodes.forEach( (element) => {
+    let qty = document.getElementById(element + '-qty').value;
+    let price = document.getElementById(element + '-price').value;
+    if(qty != 0){
+      console.log(qty);
+      console.log(element);
+      switch(element) {
+        case 'bs': {
+          let item = new Item('Breadstick', qty, price);
+          order.addItem(item);
+          break;
+        }
+        case 'lc': {
+          let item = new Item('Lava Cake', qty, price);
+          order.addItem(item);
+          break;
+        }
+        case 'cc': {
+          let item = new Item('Cheesecake', qty, price);
+          order.addItem(item);
+          break;
+        }
+        case 'rb': {
+          let item = new Item('Rootbeer', qty, price);
+          order.addItem(item);
+          break;
+        }
+        case 'ms': {
+          let item = new Item('Milkshake', qty, price);
+          order.addItem(item);
+          break;
+        }
+        case 'sw': {
+          let item = new Item('Sparkling Wine', qty, price);
+          order.addItem(item);
+          break;
+        }
+        case 'ch': {
+          let item = new Item('Champagne', qty, price);
+          order.addItem(item);
+          break;
+        }
+        default: break;
+      }
+    }
+    else {
+      console.log("No order" + element);
+    }
+  });
+  console.log(order);
+}
+
 function displayCart(order) { 
   
   let div2 = document.createElement("ul");
@@ -282,11 +336,13 @@ function displayCart(order) {
 }
 
 window.addEventListener("load", function () {
-  let order = new Order();
+  const order = new Order();
+  const x = document.getElementsByClassName("quantity");
   document.getElementById("newPizza").addEventListener("click", handlePizza);
   document.getElementById("size-section").addEventListener("click", handleSize);
   document.getElementById("toppings-section").addEventListener("click", handleToppings);
   document.getElementById("addPizza").addEventListener("click", function(e){handleAddPizza(order)});
+  document.getElementById("addItems").addEventListener("click", function(e){handleAddons(order)});
   //document.getElementById("cancelPizza").addEventListener("click", handleCancel(order));
 });
 
