@@ -58,18 +58,52 @@
                 </label>
               </div>
             </div>
-              
-            <!-- <div id="customer-details ">
-              <div class="form-floating mb-1">
-                <input type="text" class="form-control" id="full-name" placeholder="John Doe">
-                <label for="full-name">Full Name</label>
+          </div>
+          <div class="col-8" id="add-ons" hidden>
+            <div class="row mb-3">
+              <div class="col-6">
+                <img src="./img/breadsticks.jpg">
+                Breadsticks
               </div>
-              <div class="form-floating">
-                <input type="text" class="form-control" id="address" placeholder="Street, City, State, Zip">
-                <label for="address">Address</label>
+              <div class="input-group col align-self-center">
+                <span class="input-group-text">Qty</span>
+                <input type="number" class="form-control" aria-label="Quantity">
               </div>
-            </div>     -->
-          </div>          
+              <div class="input-group col align-self-center">
+                <span class="input-group-text">$</span>
+                <input type="number" class="form-control" step=".01" aria-label="Amount">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-6">
+                <img src="./img/lava-cake.jpg">
+                Lava Cake
+              </div>
+              <div class="input-group col align-self-center">
+                <span class="input-group-text">Qty</span>
+                <input type="number" class="form-control" aria-label="Quantity">
+              </div>
+              <div class="input-group col align-self-center">
+                <span class="input-group-text">$</span>
+                <input type="number" class="form-control" step=".01" aria-label="Amount">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-6">
+                <img src="./img/rootbeer.jpg">
+                Breadsticks
+              </div>
+              <div class="input-group col align-self-center">
+                <span class="input-group-text">Qty</span>
+                <input type="number" class="form-control" aria-label="Quantity">
+              </div>
+              <div class="input-group col align-self-center">
+                <span class="input-group-text">$</span>
+                <input type="number" class="form-control" step=".01" aria-label="Amount">
+              </div>
+            </div>
+          </div>
+
           <div class="col-4">
             <div class="sticky-top"> 
               <div id="pizza-details" class="details" hidden>
@@ -82,12 +116,26 @@
                   <button class="btn btn-outline-dark" id="cancelPizza">Cancel</button>
                 </div>
               </div>
-              <div class="details">
+              <div class="cart">
                 <h3>Cart</h3>
                 <div id="order-details">
                   <p><strong>Your cart is empty</strong><span id="items"></span></p>
                 </div>
               </div>
+              <div class="addbtns btn-group-vertical ">
+                <button class="btn btn-outline-success" id="addItems">Add to Cart</button>
+                <button class="btn btn-outline-dark" id="cancelPizza">Cancel</button>
+              </div>
+            </div>
+          </div>
+          <div id="customer-details ">
+            <div class="form-floating mb-1">
+              <input type="text" class="form-control" id="full-name" placeholder="John Doe">
+              <label for="full-name">Full Name</label>
+            </div>
+            <div class="form-floating">
+              <input type="text" class="form-control" id="address" placeholder="Street, City, State, Zip">
+              <label for="address">Address</label>
             </div>
           </div>
         </div>

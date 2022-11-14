@@ -1,77 +1,3 @@
-//Utility Logic
-function createButton(name, div, type){
-  let button = document.createElement("input");
-  let label = document.createElement("label");
-
-  button.setAttribute("type","checkbox"); 
-  button.setAttribute("class", "btn-check");
-  button.setAttribute("name", type);
-  button.setAttribute("id", name.split(" ").join("").toLowerCase());
-  button.setAttribute("value", name);
-  button.setAttribute("autocomplete", "off");
-
-  label.setAttribute("class","btn mx-1 my-1");
-  label.setAttribute("for", name.split(" ").join("").toLowerCase());
-  label.append(name);
-
-  div.append(button);
-  div.append(label);
-  return div;  
-}
-
-function createSection (section) {
-  const div = document.createElement("div");
-  const label = document.createElement("h4");
-  label.append(section + ":");
-  div.setAttribute("id", section.toLowerCase());
-  div.append(label);
-  return div;
-}
-
-function resetForm() {
-  document.getElementById("addBtnGrp").setAttribute("class", "btn-group");
-  document.getElementById("cyop").setAttribute("class","col-8 hidden");
-  document.getElementById("pizza-details").setAttribute("hidden","");
-  document.getElementById("toppings-section").setAttribute("hidden","");
-  document.querySelectorAll("input[type='checkbox']").forEach(function (element) {
-    element.checked = false;
-  });
-  document.querySelectorAll("input[type='radio']").forEach(function (element) {
-    element.checked = false;
-  });  
-}
-
-//Business Logic for subtotal price
-
-function getSizePrice(size) {
-  if(size.toLowerCase().includes("parva")) {
-    return 150;
-  }
-  else if(size.toLowerCase().includes("duo"))  {
-    return 300;
-  }
-  else if(size.toLowerCase().includes("magna"))  {
-    return 470;
-  }
-  return 0;
-}
-
-function getToppingsPrice(toppings) {
-  let totalTops = 0;
-  toppings.forEach( function (topping){
-    if(topping.toLowerCase().includes("gold")) {
-      totalTops += 600
-    }
-    if(topping.toLowerCase().includes("caviar")) {
-      totalTops += 400
-    }
-    if(topping.toLowerCase().includes("pule")) {
-      totalTops += 500
-    }
-  });
-  return totalTops;
-}
-
 //Business Logic for Order()
 
 function Order() {
@@ -159,6 +85,38 @@ Pizza.prototype.getPrice = function () {
   });
   return total;
 };
+
+//Business Logic for subtotals
+
+function getSizePrice(size) {
+  if(size.toLowerCase().includes("parva")) {
+    return 150;
+  }
+  else if(size.toLowerCase().includes("duo"))  {
+    return 300;
+  }
+  else if(size.toLowerCase().includes("magna"))  {
+    return 470;
+  }
+  return 0;
+}
+
+function getToppingsPrice(toppings) {
+  let totalTops = 0;
+  toppings.forEach( function (topping){
+    if(topping.toLowerCase().includes("gold")) {
+      totalTops += 600
+    }
+    if(topping.toLowerCase().includes("caviar")) {
+      totalTops += 400
+    }
+    if(topping.toLowerCase().includes("pule")) {
+      totalTops += 500
+    }
+  });
+  return totalTops;
+}
+
 
 //UI Logic
 
@@ -268,8 +226,6 @@ function handlePizza(){
 
 function handleAddPizza(order) {
   
- 
-  //const newOrder = new Order();
   const size = document.getElementById("size").innerText;
   const toppings = document.getElementById("toppings").innerText.split(", "); 
   if(toppings.length === 0 || toppings[0].length === 0){
@@ -297,7 +253,7 @@ function displayCart(order) {
   div2.style.display = "block";
 
   if(order.orderItems != undefined){
-    Object.values(order.orderItems).forEach( function (item) {
+    Object.values(order.orderItems).forEach(function (item) {
       console.log(item);
       let ahref = document.createElement("a");
       let div = document.createElement("div");
@@ -333,4 +289,48 @@ window.addEventListener("load", function () {
   document.getElementById("addPizza").addEventListener("click", function(e){handleAddPizza(order)});
   //document.getElementById("cancelPizza").addEventListener("click", handleCancel(order));
 });
+
+
+//Utility Logic
+function createButton(name, div, type){
+  let button = document.createElement("input");
+  let label = document.createElement("label");
+
+  button.setAttribute("type","checkbox"); 
+  button.setAttribute("class", "btn-check");
+  button.setAttribute("name", type);
+  button.setAttribute("id", name.split(" ").join("").toLowerCase());
+  button.setAttribute("value", name);
+  button.setAttribute("autocomplete", "off");
+
+  label.setAttribute("class","btn mx-1 my-1");
+  label.setAttribute("for", name.split(" ").join("").toLowerCase());
+  label.append(name);
+
+  div.append(button);
+  div.append(label);
+  return div;  
+}
+
+function createSection (section) {
+  const div = document.createElement("div");
+  const label = document.createElement("h4");
+  label.append(section + ":");
+  div.setAttribute("id", section.toLowerCase());
+  div.append(label);
+  return div;
+}
+
+function resetForm() {
+  document.getElementById("addBtnGrp").setAttribute("class", "btn-group");
+  document.getElementById("cyop").setAttribute("class","col-8 hidden");
+  document.getElementById("pizza-details").setAttribute("hidden","");
+  document.getElementById("toppings-section").setAttribute("hidden","");
+  document.querySelectorAll("input[type='checkbox']").forEach(function (element) {
+    element.checked = false;
+  });
+  document.querySelectorAll("input[type='radio']").forEach(function (element) {
+    element.checked = false;
+  });  
+}
 
