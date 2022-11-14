@@ -127,9 +127,9 @@ Item.prototype.getPrice = function () {
 };
 
 //Business Logic for Pizza()
-function Pizza() {
-  this.toppings = [];
-  this.size = "";
+function Pizza(toppings, size) {
+  this.toppings = toppings;
+  this.size = size;
   this.item = "Pizza";
 }
 
