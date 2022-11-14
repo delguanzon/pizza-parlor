@@ -41,6 +41,36 @@ function resetForm() {
   });  
 }
 
+function getSizePrice(size) {
+  if(size.toLowerCase().includes("parva")) {
+    return 150;
+  }
+  else if(size.toLowerCase().includes("duo"))  {
+    return 300;
+  }
+  else if(size.toLowerCase().includes("magna"))  {
+    return 470;
+  }
+  return 0;
+}
+
+function getToppingsPrice(toppings) {
+  let totalTops = 0;
+  toppings.forEach( function (topping){
+    if(topping.toLowerCase().includes("gold")) {
+      totalTops += 600
+    }
+    if(topping.toLowerCase().includes("caviar")) {
+      totalTops += 400
+    }
+    if(topping.toLowerCase().includes("pule")) {
+      totalTops += 500
+    }
+  });
+  return totalTops;
+}
+
+
 //Business Logic for Order()
 
 function Order() {
@@ -106,62 +136,18 @@ Pizza.prototype.getPrice = function () {
   return calculatePrice(this);
 };
 
-function calculatePrice(pizza) {
-  let size = pizza.size;
-  let toppings = pizza.toppings;
-  let total = 0;
-  return total + getSizePrice(size) + getToppingsPrice(toppings);
-}
-
-function getSizePrice(size) {
-  if(size.toLowerCase().includes("parva")) {
-    return 150;
-  }
-  else if(size.toLowerCase().includes("duo"))  {
-    return 300;
-  }
-  else if(size.toLowerCase().includes("magna"))  {
-    return 470;
-  }
-  return 0;
-}
-
-function getToppingsPrice(toppings) {
-  let totalTops = 0;
-
-  toppings.forEach( function (topping){
-    if(topping.toLowerCase().includes("gold")) {
-      totalTops += 600
-    }
-    if(topping.toLowerCase().includes("caviar")) {
-      totalTops += 400
-    }
-    if(topping.toLowerCase().includes("pule")) {
-      totalTops += 500
-    }
-  });
-  return totalTops;
-}
-
 //UI Logic
 
-function handleSize(order) {
-  let size = document.querySelector("input[name='size']:checked");  
-  let toppings = [];
+function handleSize() {
+  let size = document.querySelector("input[name='size']:checked");
   if(size === null){
     console.log(size);
   }
   else {
     document.getElementById("toppings-section").removeAttribute("hidden");
   }  
-
-  let toppingsList = document.getElementsByName("toppings"); 
-  toppingsList.forEach(function (element) {    
-    if(element.checked)
-    toppings.push(element.value);
-  });
-
-  displayTotal(toppings, size.value);
+  let toppingsList = document.getElementById("toppings").innerText.split(", "); 
+  displayTotal(toppingsList, size.value);
 }
 
 function handleToppings() {
@@ -196,24 +182,24 @@ function handleToppings() {
     toppings.push(element.value);
   });
 
-  displayTotal(toppings,size);
+  displayTotal(toppings, size);
 }
 
 
 function displayTotal(toppings, size) {
-  size = size;
-  toppings = toppings;
+  
+  let toppingsList = [];
 
   document.getElementById("subtotal").replaceChildren(getSizePrice(size) + getToppingsPrice(toppings));
   document.getElementById("size").replaceChildren(size);
 
   toppings.forEach(function (element) {
     if(element.toLowerCase().includes("gold")) {
-      toppings.push(" 24K Gold Flakes");
+      toppingsList.push(" 24K Gold Flakes");
     }
-    else toppings.push(" "+ element);
+    else toppingsList.push(" "+ element);
   });
-  document.getElementById("toppings").replaceChildren(toppings);
+  document.getElementById("toppings").replaceChildren(toppingsList);
 }
 
 function displayAllToppings () {

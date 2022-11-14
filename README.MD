@@ -41,51 +41,13 @@ Test: "It should return a Pizza object with two properties for toppings and size
 Code: const myPizza = new Pizza(["anchovies", "caviar"], "parva");
 Expected Output: Pizza { toppings: ["anchovies", "Caviar"], size: "Parva" }
 
-Describe: getSizePrice(size)
+Describe: Pizza.prototype.getPrice()
 
 Test: It should return 150 for "Parva" size pizza.
-Code: getSizePrize("Parva")
+Code: 
+  const myPizza = new Pizza(["anchovies", "caviar"], "parva");
+  myPizza.getSizePrize();
 Expceted Output: 150;
-
-Test: It should return 300 for "Duo" size pizza.
-Code: getSizePrize("Duo")
-Expceted Output: 300;
-
-Test: It should return 470 for "Magna" size pizza.
-Code: getSizePrize("Magna")
-Expceted Output: 470;
-
-Describe: getToppingsPrice(toppings)
-Test: It should add 600 to the total for pizzas with special topping: "12k Gold Shavings".
-Code: 
-  let total = 0;
-  const toppings = ["gold", "caviar", "pule"];
-  getToppingsPrice(toppings);
-Expceted Output: 600;
-
-Test: It should add 400 to the total for pizzas with special topping: "Caviar".
-Code: 
-  let total = 0;
-  const toppings = ["gold", "caviar", "pule"];
-  getToppingsPrice(toppings);
-Expceted Output: 1000;
-
-Test: It should add 500 to the total for pizzas with special topping: "Pule".
-Code: 
-  let total = 0;
-  const toppings = ["gold", "caviar", "pule"];
-  getToppingsPrice(toppings);
-Expceted Output: 1500;
-
-Describe: calculatePrice()
-
-Test: It should return the calculated price of a pizza object.
-Code:
-  const myPizza = new Pizza(["anchovies", "caviar"], "parva"); 
-  calculatePrice(myPizza);
-Expected Output: 550
-
-Describe: Pizza.prototype.getPrice()
 
 Test: It should return the price of the pizza through a prototype method.
 Code: myPizza.getPrice();
@@ -145,6 +107,41 @@ Test: It should return 0 if there are no items in  the order.
 Code: order.getPrice();
 Expected Output: 0;
 
+Describe: getSizePrice(size)
+
+Test: It should return 150 for "Parva" size pizza.
+Code: getSizePrize("Parva")
+Expceted Output: 150;
+
+Test: It should return 300 for "Duo" size pizza.
+Code: getSizePrize("Duo")
+Expceted Output: 300;
+
+Test: It should return 470 for "Magna" size pizza.
+Code: getSizePrize("Magna")
+Expceted Output: 470;
+
+Describe: getToppingsPrice(toppings)
+Test: It should add 600 to the total for pizzas with special topping: "12k Gold Shavings".
+Code: 
+  let total = 0;
+  const toppings = ["gold", "caviar", "pule"];
+  getToppingsPrice(toppings);
+Expceted Output: 600;
+
+Test: It should add 400 to the total for pizzas with special topping: "Caviar".
+Code: 
+  let total = 0;
+  const toppings = ["gold", "caviar", "pule"];
+  getToppingsPrice(toppings);
+Expceted Output: 1000;
+
+Test: It should add 500 to the total for pizzas with special topping: "Pule".
+Code: 
+  let total = 0;
+  const toppings = ["gold", "caviar", "pule"];
+  getToppingsPrice(toppings);
+Expceted Output: 1500;
 
 
 ```
