@@ -151,7 +151,10 @@ Pizza.prototype.getPrice = function () {
       total += 600
     }
     if(topping.toLowerCase().includes("caviar")) {
-      totalTops += 400
+      total += 400
+    }
+    if(topping.toLowerCase().includes("pule")) {
+      total += 500
     }
   });
   return total;
