@@ -46,8 +46,14 @@ Describe: Pizza.prototype.getPrice()
 Test: It should return 150 for "Parva" size pizza.
 Code: 
   const myPizza = new Pizza(["anchovies", "caviar"], "parva");
-  myPizza.getSizePrize();
+  myPizza.getPrive();
 Expceted Output: 150;
+
+Test: It should return 300 for "Duo" size pizza.
+Code: 
+  const myPizza = new Pizza(["anchovies", "caviar"], "duo");
+  myPizza.getPrice();
+Expceted Output: 300;
 
 Test: It should return the price of the pizza through a prototype method.
 Code: myPizza.getPrice();

@@ -135,7 +135,7 @@ function Pizza() {
 }
 
 Pizza.prototype.getPrice = function () {
-  if(size.toLowerCase().includes("parva")) {
+  if(this.size.toLowerCase().includes("parva")) {
     return 150;
   }
 };
