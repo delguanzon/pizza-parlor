@@ -138,6 +138,9 @@ Pizza.prototype.getPrice = function () {
   if(this.size.toLowerCase().includes("parva")) {
     return 150;
   }
+  else if(size.toLowerCase().includes("duo"))  {
+    return 300;
+  }
 };
 
 //UI Logic
