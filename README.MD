@@ -39,7 +39,7 @@ Describe: Pizza()
 
 Test: "It should return a Pizza object with two properties for toppings and size"
 Code: const myPizza = new Pizza(["anchovies", "caviar"], "parva");
-Expected Output: Pizza { toppings: ["anchovies", "Caviar"], size: "Parva" }
+Expected Output: Pizza { toppings: ["anchovies", "caviar"], size: "parva" }
 
 Describe: Pizza.prototype.getPrice()
 
