@@ -41,6 +41,8 @@ function resetForm() {
   });  
 }
 
+//Business Logic
+
 function getSizePrice(size) {
   if(size.toLowerCase().includes("parva")) {
     return 150;
@@ -133,7 +135,9 @@ function Pizza() {
 }
 
 Pizza.prototype.getPrice = function () {
-  return calculatePrice(this);
+  if(size.toLowerCase().includes("parva")) {
+    return 150;
+  }
 };
 
 //UI Logic
