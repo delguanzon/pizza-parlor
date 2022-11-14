@@ -113,12 +113,21 @@ Describe: Order.prototype.addItem();
 Test: Add an item to orderItems of the Order object
 Code: let myOrder = new Order();
       order.addItem(myPizza)
-Expected Output: Order {orderItems: myPizza, contact:'', currentId:1}
+Expected Output: Order {orderItems: myPizza, currentId:1}
+
+Describe: Order.prototype.updateItem();
+Test: Update price and quantity of an item in an order;
+Code:
+  Order { orderItems: { item: "Rootbeer" price: 5.01 qty: 1 }
+  order.updateItem("Rootbeer", 2.00, 3);
+Expected Output: Order { orderItems: { item: "Rootbeer" price: 2.00 qty: 3 }
 
 Describe: Order.prototype.removeItem()
 Test: Remove an item from the order
-Code: order.removeItem(myPizza);
-Expected Output: Order {orderItems: , contact:'', currentId:1}
+Code: 
+  Order {orderItems: myPizza, currentId:1}
+  order.removeItem(myPizza);
+Expected Output: Order {orderItems: , currentId:1}
 
 Describe: Order.prototype.getTotalPrice()
 Test: It should return the total price for all the items in order.
