@@ -46,7 +46,7 @@ Describe: Pizza.prototype.getPrice()
 Test: It should return 150 for "Parva" size pizza.
 Code: 
   const myPizza = new Pizza(["anchovies", "caviar"], "parva");
-  myPizza.getPrive();
+  myPizza.getPrice();
 Expceted Output: 150;
 
 Test: It should return 300 for "Duo" size pizza.
@@ -61,9 +61,23 @@ Code:
   myPizza.getPrice();
 Expceted Output: 470;
 
-Test: It should return the price of the pizza through a prototype method.
-Code: myPizza.getPrice();
+Test: It should add 600 to the total for pizzas with special topping: "12k Gold Shavings".
+Code: 
+  const myPizza = new Pizza(["anchovies", "gold"], "parva");
+  myPizza.getPrice();
+Expceted Output: 750;
+
+Test: It should add 400 to the total for pizzas with special topping: "Caviar".
+Code: 
+  const myPizza = new Pizza(["anchovies", "caviar"], "parva");
+  myPizza.getPrice();
 Expceted Output: 550;
+
+Test: It should add 500 to the total for pizzas with special topping: "Pule".
+Code: 
+  const myPizza = new Pizza(["anchovies", "pule"], "parva");
+  myPizza.getPrice();
+Expceted Output: 650;
 
 Describe: Contact()
 Test: It should return a contact object with name, address, and phone number.
