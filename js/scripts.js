@@ -145,23 +145,29 @@ function getToppingsPrice(toppings) {
 
 //UI Logic
 
-const order = new Order();
-
-function handleSize() {
-  let size = document.querySelector("input[name='size']:checked");
+function handleSize(order) {
+  let size = document.querySelector("input[name='size']:checked");  
+  let toppings = [];
   if(size === null){
-    order.orderItems[order.currentId].size = "";
+    console.log(size);
   }
   else {
-    order.orderItems[order.currentId].size = size.value;
     document.getElementById("toppings-section").removeAttribute("hidden");
   }  
-  displayTotal();
+
+  let toppingsList = document.getElementsByName("toppings"); 
+  toppingsList.forEach(function (element) {    
+    if(element.checked)
+    toppings.push(element.value);
+  });
+
+  displayTotal(toppings, size.value);
 }
 
-function handleToppings(e) {
+function handleToppings() {
   let toppings = []; 
   let cheeses = [];
+  let size = document.getElementById("size").innerText;
 
   let cheeseList = document.getElementsByName("cheese");
   cheeseList.forEach(function (cheese) {
@@ -190,18 +196,18 @@ function handleToppings(e) {
     toppings.push(element.value);
   });
 
-  order.orderItems[order.currentId].toppings = toppings;  
-  displayTotal();
+  displayTotal(toppings,size);
 }
 
 
-function displayTotal() {
+function displayTotal(toppings, size) {
+  size = size;
+  toppings = toppings;
 
-  let toppings = [];
-  document.getElementById("subtotal").replaceChildren(order.orderItems[order.currentId].getPrice());
-  document.getElementById("size").replaceChildren(order.orderItems[order.currentId].size);
+  document.getElementById("subtotal").replaceChildren(getSizePrice(size) + getToppingsPrice(toppings));
+  document.getElementById("size").replaceChildren(size);
 
-  order.orderItems[order.currentId].toppings.forEach(function (element) {
+  toppings.forEach(function (element) {
     if(element.toLowerCase().includes("gold")) {
       toppings.push(" 24K Gold Flakes");
     }
@@ -246,27 +252,29 @@ function displayAllToppings () {
 function handlePizza(){
   document.getElementById("addBtnGrp").setAttribute("class", "hidden");
   document.getElementById("cyop").setAttribute("class","col-8");
-  document.getElementById("pizza-details").removeAttribute("hidden");
-  
-  let pizza = new Pizza();
-  order.addItem(pizza);
+  document.getElementById("pizza-details").removeAttribute("hidden"); 
+  displayAllToppings();
 }
 
-function handleAddPizza() {
-  resetForm();
+// function handleAddPizza(order) {
+//   resetForm();
 
-  if(order.orderItems[order.currentId].toppings.length === 0){
-    order.orderItems[order.currentId].toppings.push("Dough Only");
-  }
-  displayCart();
-}
-function handleCancel() {
-  resetForm();
-  order.removeItem(order.orderItems[order.currentId]);
-  displayCart();  
-}
+//   if(order.orderItems[order.currentId].toppings.length === 0){
+//     order.orderItems[order.currentId].toppings.push("Dough Only");
+//   }
 
-function displayCart() { 
+//   let pizza = new Pizza();
+//   order.addItem(pizza);
+//   displayCart();
+// }
+
+// function handleCancel(order) {
+//   resetForm();
+//   order.removeItem(order.orderItems[order.currentId]);
+//   displayCart();  
+// }
+
+function displayCart(order) { 
   
   let div2 = document.createElement("ul");
   let p = document.createElement("p");
@@ -302,12 +310,11 @@ function displayCart() {
 }
 
 window.addEventListener("load", function () {
-  displayAllToppings();  
-  document.getElementById("addPizza").addEventListener("click", handleAddPizza);
-  document.getElementById("cancelPizza").addEventListener("click", handleCancel);
+  const order = new Order();  
   document.getElementById("newPizza").addEventListener("click", handlePizza);
   document.getElementById("size-section").addEventListener("click", handleSize);
   document.getElementById("toppings-section").addEventListener("click", handleToppings);
-
+  //document.getElementById("addPizza").addEventListener("click", handleAddPizza(order));
+  //document.getElementById("cancelPizza").addEventListener("click", handleCancel(order));
 });
 
