@@ -224,7 +224,54 @@ function handlePizzaView(){
   displayAllToppings();
 }
 
-function handleAddonView() {
+function handleAddonView(order) {
+  Object.values(order.orderItems).forEach(function (item) {
+    switch(item.item) {
+      case 'Breadstick': {
+        document.getElementById("addItems").replaceChildren("Update Cart");
+        document.getElementById('bs-qty').value = item.qty;
+        document.getElementById('bs-price').value = item.price;
+        break;
+      }
+      case 'Lava Cake': {
+        document.getElementById("addItems").replaceChildren("Update Cart");
+        document.getElementById('lc-qty').value = item.qty;
+        document.getElementById('lc-price').value = item.price;
+        break;
+      }
+      case 'Cheesecake': {
+        document.getElementById("addItems").replaceChildren("Update Cart");
+        document.getElementById('cc-qty').value = item.qty;
+        document.getElementById('cc-price').value = item.price;
+        break;
+      }
+      case 'Rootbeer': {
+        document.getElementById("addItems").replaceChildren("Update Cart");
+        document.getElementById('rb-qty').value = item.qty;
+        document.getElementById('rb-price').value = item.price;
+        break;
+      }
+      case 'Milkshake': {
+        document.getElementById("addItems").replaceChildren("Update Cart");
+        document.getElementById('ms-qty').value = item.qty;
+        document.getElementById('ms-price').value = item.price;
+        break;
+      }
+      case 'Sparkling Wine': {
+        document.getElementById("addItems").replaceChildren("Update Cart");
+        document.getElementById('sw-qty').value = item.qty;
+        document.getElementById('sw-price').value = item.price;
+        break;
+      }
+      case 'Champagne': {
+        document.getElementById("addItems").replaceChildren("Update Cart");
+        document.getElementById('ch-qty').value = item.qty;
+        document.getElementById('ch-price').value = item.price;
+        break;
+      }
+      default: break;
+    }
+  });
   document.getElementById("addBtnGrp").setAttribute("class", "hidden");
   document.getElementById("add-ons").removeAttribute("hidden");
   document.querySelector(".addbtns").removeAttribute("hidden");
@@ -261,37 +308,37 @@ function handleAddons(order) {
       console.log(element);
       switch(element) {
         case 'bs': {
-          let item = new Item('Breadstick', qty, price);
+          let item = new Item('Breadstick', price, qty);
           order.addItem(item);
           break;
         }
         case 'lc': {
-          let item = new Item('Lava Cake', qty, price);
+          let item = new Item('Lava Cake', price, qty);
           order.addItem(item);
           break;
         }
         case 'cc': {
-          let item = new Item('Cheesecake', qty, price);
+          let item = new Item('Cheesecake', price, qty);
           order.addItem(item);
           break;
         }
         case 'rb': {
-          let item = new Item('Rootbeer', qty, price);
+          let item = new Item('Rootbeer', price, qty);
           order.addItem(item);
           break;
         }
         case 'ms': {
-          let item = new Item('Milkshake', qty, price);
+          let item = new Item('Milkshake', price, qty);
           order.addItem(item);
           break;
         }
         case 'sw': {
-          let item = new Item('Sparkling Wine', qty, price);
+          let item = new Item('Sparkling Wine', price, qty);
           order.addItem(item);
           break;
         }
         case 'ch': {
-          let item = new Item('Champagne', qty, price);
+          let item = new Item('Champagne', price, qty);
           order.addItem(item);
           break;
         }
@@ -348,9 +395,9 @@ window.addEventListener("load", function () {
   const order = new Order();
   const x = document.getElementsByClassName("quantity");
   document.getElementById("newPizza").addEventListener("click", handlePizzaView);
-  document.getElementById("newItem").addEventListener("click", handleAddonView);
   document.getElementById("size-section").addEventListener("click", handleSize);
   document.getElementById("toppings-section").addEventListener("click", handleToppings);
+  document.getElementById("newItem").addEventListener("click", function(e){handleAddonView(order)});
   document.getElementById("addPizza").addEventListener("click", function(e){handleAddPizza(order)});
   document.getElementById("addItems").addEventListener("click", function(e){handleAddons(order)});
   document.getElementById("cancelPizza").addEventListener("click", function(e){handleCancel(order)});
