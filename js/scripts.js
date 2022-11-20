@@ -218,7 +218,6 @@ function handlePizzaView() {
   document.getElementById("addBtnGrp").setAttribute("class", "hidden");
   document.getElementById("cyop").setAttribute("class", "col-8");
   document.getElementById("pizza-details").removeAttribute("hidden");
-  displayAllToppings();
 }
 
 function handleAddonView(order) {
@@ -508,6 +507,7 @@ function displayCart(order) {
 
 window.addEventListener("load", function () {
   const order = new Order();
+  displayAllToppings();
   document.getElementById("newPizza").addEventListener("click", handlePizzaView);
   document.getElementById("size-section").addEventListener("click", handleSize);
   document.getElementById("toppings-section").addEventListener("click", handleToppings);
