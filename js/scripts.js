@@ -508,15 +508,14 @@ function displayCart(order) {
 
 window.addEventListener("load", function () {
   const order = new Order();
-  const x = document.getElementsByClassName("quantity");
   document.getElementById("newPizza").addEventListener("click", handlePizzaView);
   document.getElementById("size-section").addEventListener("click", handleSize);
   document.getElementById("toppings-section").addEventListener("click", handleToppings);
-  document.getElementById("newItem").addEventListener("click", function (e) { handleAddonView(order) });
-  document.getElementById("addPizza").addEventListener("click", function (e) { handleAddPizza(order) });
-  document.getElementById("addItems").addEventListener("click", function (e) { handleAddons(order) });
-  document.getElementById("cancelPizza").addEventListener("click", function (e) { handleCancel(order) });
-  document.getElementById("cancelItems").addEventListener("click", function (e) { handleCancel(order) });
+  document.getElementById("newItem").addEventListener("click", function () { handleAddonView(order) });
+  document.getElementById("addPizza").addEventListener("click", function () { handleAddPizza(order) });
+  document.getElementById("addItems").addEventListener("click", function () { handleAddons(order) });
+  document.getElementById("cancelPizza").addEventListener("click", function () { handleCancel(order) });
+  document.getElementById("cancelItems").addEventListener("click", function () { handleCancel(order) });
 });
 
 
